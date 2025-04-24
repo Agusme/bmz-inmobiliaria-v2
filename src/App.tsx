@@ -1,9 +1,13 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+
 function App() {
-
-
   return (
     <>
-  <h1 className="bg-blue-500 p-4">HELLO WORLD</h1>
+      <Router>
+        <Routes>
+          <Route></Route>
+        </Routes>
+      </Router>
     </>
   )
 }
