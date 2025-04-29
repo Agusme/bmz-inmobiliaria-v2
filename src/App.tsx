@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
+import Home from "./screens/Home"
+import Contact from "./screens/Contact"
 
 function App() {
   return (
@@ -9,7 +11,8 @@ function App() {
         <Navbar/>      
           <div className="flex-grow max-w-screen-xl mx-auto px-4">
           <Routes>
-            <Route></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/contacto" element={<Contact />} />
           </Routes>
         </div>
         <Footer />

@@ -1,20 +1,24 @@
 import { FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 import { RiFacebookCircleLine } from "react-icons/ri";
 import logo from '../assets/logo.png'
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
       <div className="bg-black py-7 text-white ">
         <div className="grid grid-cols-1 dm:grid-cols-2 lg:grid-cols-3 gap-4 ">
           <div>
-            <img src={logo} alt="logo bmz inmobiliaria" className="w-20 mx-auto" />
+            <Link to='/'>
+              <img src={logo} alt="logo bmz inmobiliaria" className="w-20 mx-auto" />
+            </Link>
           </div>
           <div className="text-center mx-auto dm:text-left">
             <h4 className="font-bold mb-2">Páginas</h4>{" "}
             <ul>
               <li>Nosotros</li>
               <li>Propiedades</li>
-              <li> Contacto</li>
+              <li>  <Link to="/contacto" className="hover:underline">
+                Contacto      </Link></li>
             </ul>
           </div>
           <div className="text-center  mx-auto dm:text-start">
