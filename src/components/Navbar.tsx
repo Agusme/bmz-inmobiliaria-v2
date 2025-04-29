@@ -6,12 +6,10 @@ export default function Navbar() {
             <div className="flex-1">
                 <NavLink to="/" className="hover:underline">
                     <img src={logoNegro} alt="" className='w-20' />
-
-
                 </NavLink>
             </div>
             <div className="flex-none hidden lg:flex uppercase font-semibold">
-                <ul className="menu menu-horizontal p-0">
+                <ul className="menu menu-horizontal font-bold p-0">
                 <li>
                     <NavLink
                         to="/"
@@ -59,11 +57,36 @@ export default function Navbar() {
                             ></path>
                         </svg>
                     </button>
-                    <ul className="uppercase  font-semibold dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Nosotros</a></li>
-                        <li><a>Propiedades</a></li>
-                        <li><a>Servicios</a></li>
-                        <li><a>Contacto</a></li>
+                    <ul className="uppercase  font-bold dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
+                        Inicio
+                    </NavLink></li>
+                    <li>
+                    <NavLink
+                        to="/nosotros"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
+                        Nosotros
+                    </NavLink></li>
+
+                    <li>
+                    <NavLink
+                        to="/propiedades"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
+                        Propiedades
+                    </NavLink></li>
+                    <li><NavLink
+                        to="/contacto"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
+                        Contacto
+                    </NavLink></li>
+
                     </ul>
                 </div>
             </div>
