@@ -1,22 +1,45 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logoNegro from '../assets/logoNegro.png'
 export default function Navbar() {
     return (
-        <div className="max-w-screen-xl mx-auto px-4 navbar bg-base-100 shadow-sm">
+        <div className="max-w-screen-xl text-gray-600 mx-auto px-4 navbar bg-base-100 shadow-sm">
             <div className="flex-1">
-                <Link to="/" className="hover:underline">
+                <NavLink to="/" className="hover:underline">
                     <img src={logoNegro} alt="" className='w-20' />
 
-                </Link>
+
+                </NavLink>
             </div>
             <div className="flex-none hidden lg:flex uppercase font-semibold">
                 <ul className="menu menu-horizontal p-0">
-                    <li><a>Nosotros</a></li>
-                    <li><a>Propiedades</a></li>
-                    <li><a>Servicios</a></li>
-                    <li> <Link to="/contacto" className="hover:underline">
+                <li>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
+                        Inicio
+                    </NavLink></li>
+                    <li>
+                    <NavLink
+                        to="/nosotros"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
+                        Nosotros
+                    </NavLink></li>
+
+                    <li>
+                    <NavLink
+                        to="/propiedades"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
+                        Propiedades
+                    </NavLink></li>
+                    <li><NavLink
+                        to="/contacto"
+                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                    >
                         Contacto
-                    </Link></li>
+                    </NavLink></li>
                 </ul>
             </div>
             <div className="flex-none lg:hidden">

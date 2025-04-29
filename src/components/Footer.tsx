@@ -1,7 +1,7 @@
 import { FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 import { RiFacebookCircleLine } from "react-icons/ri";
 import logo from '../assets/logo.png'
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <>
@@ -15,10 +15,38 @@ export default function Footer() {
           <div className="text-center mx-auto dm:text-left">
             <h4 className="font-bold mb-2">Páginas</h4>{" "}
             <ul>
-              <li>Nosotros</li>
-              <li>Propiedades</li>
-              <li>  <Link to="/contacto" className="hover:underline">
-                Contacto      </Link></li>
+              <li>
+              <NavLink
+                  to="/"
+                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                >
+                  Inicio
+                </NavLink>
+              </li>
+              <li>
+              <NavLink
+                  to="/nosotros"
+                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                >
+                  Nosotros
+                </NavLink>
+              </li>
+              <li>
+              <NavLink
+                  to="/propiedades"
+                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                >
+                  Propiedades
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contacto"
+                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                >
+                  Contacto
+                </NavLink>
+              </li>
             </ul>
           </div>
           <div className="text-center  mx-auto dm:text-start">
