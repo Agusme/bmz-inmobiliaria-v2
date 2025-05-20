@@ -12,9 +12,9 @@ export default function Footer() {
               <img src={logo} alt="logo bmz inmobiliaria" className="w-20 mx-auto" />
             </Link>
           </div>
-          <div className="text-center mx-auto dm:text-left">
-            <h4 className="font-bold mb-2">Páginas</h4>{" "}
-            <ul>
+          <div className="text-center mx-auto dm:text-left ">
+            <h4 className="font-thin mb-2">Páginas</h4>{" "}
+            <ul className="font-thin">
               <li>
               <NavLink
                   to="/"
@@ -50,7 +50,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="text-center  mx-auto dm:text-start">
-            <h4 className="font-bold mb-2">Nuestras Redes</h4>
+            <h4 className="font-thin mb-2">Nuestras Redes</h4>
             <ul className="flex justify-center dm:justify-start gap-2 text-3xl">
               <li>
                 <RiFacebookCircleLine />
@@ -67,7 +67,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <p className="text-center pt-4">© 2025 BMZ Propiedades | MP 111 y 112 | Tucumán, Argentina
+        <p className="text-center pt-4 font-thin">© 2025 BMZ Propiedades | MP 111 y 112 | Tucumán, Argentina
           Miembro del Colegio de Corredores Inmobiliarios de Tucumán (CCIT).</p>
       </div>
     </>

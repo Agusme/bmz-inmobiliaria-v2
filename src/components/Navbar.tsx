@@ -8,8 +8,8 @@ export default function Navbar() {
                     <img src={logoNegro} alt="" className='w-20' />
                 </NavLink>
             </div>
-            <div className="flex-none hidden lg:flex uppercase font-semibold">
-                <ul className="menu menu-horizontal font-bold p-0">
+            <div className="flex-none hidden lg:flex uppercase">
+                <ul className="menu menu-horizontal font-thin p-0">
                 <li>
                     <NavLink
                         to="/"
@@ -57,7 +57,7 @@ export default function Navbar() {
                             ></path>
                         </svg>
                     </button>
-                    <ul className="uppercase  font-bold dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul className="uppercase  font-thin dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
                     <NavLink
                         to="/"
