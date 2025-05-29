@@ -18,7 +18,7 @@ export default function Footer() {
               <li>
               <NavLink
                   to="/"
-                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
                 >
                   Inicio
                 </NavLink>
@@ -26,7 +26,7 @@ export default function Footer() {
               <li>
               <NavLink
                   to="/nosotros"
-                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
                 >
                   Nosotros
                 </NavLink>
@@ -34,7 +34,7 @@ export default function Footer() {
               <li>
               <NavLink
                   to="/propiedades"
-                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
                 >
                   Propiedades
                 </NavLink>
@@ -42,7 +42,7 @@ export default function Footer() {
               <li>
                 <NavLink
                   to="/contacto"
-                  className={({ isActive }) => isActive ? "text-blue-600" : "text-white"}
+                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
                 >
                   Contacto
                 </NavLink>

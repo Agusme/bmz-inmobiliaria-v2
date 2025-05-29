@@ -13,14 +13,14 @@ export default function Navbar() {
                 <li>
                     <NavLink
                         to="/"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Inicio
                     </NavLink></li>
                     <li>
                     <NavLink
                         to="/nosotros"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Nosotros
                     </NavLink></li>
@@ -28,13 +28,13 @@ export default function Navbar() {
                     <li>
                     <NavLink
                         to="/propiedades"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Propiedades
                     </NavLink></li>
                     <li><NavLink
                         to="/contacto"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Contacto
                     </NavLink></li>
@@ -61,14 +61,14 @@ export default function Navbar() {
                 <li>
                     <NavLink
                         to="/"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Inicio
                     </NavLink></li>
                     <li>
                     <NavLink
                         to="/nosotros"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Nosotros
                     </NavLink></li>
@@ -76,13 +76,13 @@ export default function Navbar() {
                     <li>
                     <NavLink
                         to="/propiedades"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Propiedades
                     </NavLink></li>
                     <li><NavLink
                         to="/contacto"
-                        className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
                     >
                         Contacto
                     </NavLink></li>
