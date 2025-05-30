@@ -9,11 +9,12 @@ export default function ContactForm() {
             <form className="grid grid-cols-1 gap-2">
                 <div>
                     <label><span className="text-red-800">*</span> Nombre y Apellido: </label>
-                    <input type="text" className="mt-2 input w-full" placeholder="Nombre y Apellido" />
+                    <input type="text" className="mt-2 input w-full" placeholder="Nombre y Apellido" required />
                 </div>
                 <div>
                     <label> <span className="text-red-800">*</span> Celular : </label>
-                    <input type="number" className="mt-2 input w-full" placeholder="3815633407" />
+                    <input type="tel" className="mt-2 input w-full validator tabular-nums" placeholder="3815633407" minLength={10} maxLength={10} required title="Tienen que ser 10 dígitos" pattern="\d{10}"  inputMode="numeric" />
+                    <p className="validator-hint">Tiene que ser 10 dígitos</p>
                 </div>
                 <div>
                     <label> <span className="text-red-800">*</span> Consulta: </label>
