@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <div className="max-w-screen-xl text-gray-600 mx-auto px-4 navbar bg-base-100 shadow-sm">
             <div className="flex-1">
-                <NavLink to="/" className="hover:underline">
+                <NavLink to="/" >
                     <img src={logoNegro} alt="" className='w-20' />
                 </NavLink>
             </div>
@@ -13,14 +13,14 @@ export default function Navbar() {
                 <li>
                     <NavLink
                         to="/"
-                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? "font-semibold text-red-800" : "text-gray-600"}
                     >
                         Inicio
                     </NavLink></li>
                     <li>
                     <NavLink
                         to="/nosotros"
-                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? "font-semibold text-red-800" : "text-gray-600"}
                     >
                         Nosotros
                     </NavLink></li>
@@ -28,13 +28,13 @@ export default function Navbar() {
                     <li>
                     <NavLink
                         to="/propiedades"
-                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? "font-semibold text-red-800" : "text-gray-600"}
                     >
                         Propiedades
                     </NavLink></li>
                     <li><NavLink
                         to="/contacto"
-                        className={({ isActive }) => isActive ? " text-red-800" : "text-gray-600"}
+                        className={({ isActive }) => isActive ? "font-semibold text-red-800" : "text-gray-600"}
                     >
                         Contacto
                     </NavLink></li>

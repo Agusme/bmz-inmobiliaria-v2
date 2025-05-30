@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <div className="bg-black py-7 text-white ">
+      <div className="bg-black py-7 text-gray-300">
         <div className="grid grid-cols-1 dm:grid-cols-2 lg:grid-cols-3 gap-4 ">
           <div>
             <Link to='/'>
@@ -18,7 +18,7 @@ export default function Footer() {
               <li>
               <NavLink
                   to="/"
-                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
+                  className={({ isActive }) => isActive ? "text-white underline" : "text-gray-300"}
                 >
                   Inicio
                 </NavLink>
@@ -26,7 +26,7 @@ export default function Footer() {
               <li>
               <NavLink
                   to="/nosotros"
-                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
+                  className={({ isActive }) => isActive ? "text-white underline" : "text-gray-300"}
                 >
                   Nosotros
                 </NavLink>
@@ -34,7 +34,7 @@ export default function Footer() {
               <li>
               <NavLink
                   to="/propiedades"
-                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
+                  className={({ isActive }) => isActive ? "text-white underline" : "text-gray-300"}
                 >
                   Propiedades
                 </NavLink>
@@ -42,7 +42,7 @@ export default function Footer() {
               <li>
                 <NavLink
                   to="/contacto"
-                  className={({ isActive }) => isActive ? " text-red-800" : "text-white"}
+                  className={({ isActive }) => isActive ? "text-white underline" : "text-gray-300"}
                 >
                   Contacto
                 </NavLink>

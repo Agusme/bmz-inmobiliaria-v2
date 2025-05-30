@@ -7,7 +7,7 @@ const Nosotros = () => {
         <div className="bg-[url('/Fondo.jpeg')] bg-cover bg-center flex justify-center items-start p-10 md:p-32 ">
             <div className="bg-white bg-opacity-90 shadow-lg p-8  w-full rounded-lg">
                 <h1 className="text-3xl  mb-6 uppercase font-thin">
-                    Conocé BMZ Propiedades: <strong>Inmobiliaria de confianza en Tucumán</strong>
+                    Conocé BMZ Propiedades: <strong className=' text-red-800'>Inmobiliaria de confianza en Tucumán</strong>
                 </h1>
                 <p>
                     Somos una <strong>
