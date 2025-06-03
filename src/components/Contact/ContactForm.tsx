@@ -1,31 +1,97 @@
+import { useForm } from 'react-hook-form';
+
+type FormData = {
+    nombre: string;
+    celular: string;
+    consulta: string;
+}
+
 
 export default function ContactForm() {
+
+    const { register, handleSubmit, formState: { errors, dirtyFields }, reset } = useForm<FormData>()
+
+    const onSubmit = (data: FormData) => {
+
+        console.log('Formulado enviado', data)
+        reset({}, {
+            keepErrors: false,
+            keepDirty: false,
+            keepTouched: false,
+            keepIsSubmitted: false
+        })
+    }
+
     return (
         <div className="my-4 p-5">
             <h2 className="uppercase text-center text-xl text-red-800">Dejanos tus datos</h2>
             <div className="text-gray-300 my-5 border-y py-10 mx-auto h-40">
                 <p className=" text-black">Queremos ayudarte a encontrar la propiedad que estás buscando. Déjanos tus datos para que podamos contactarte y brindarte asesoramiento personalizado a la brevedad.</p>
             </div>
-            <form className="grid grid-cols-1 gap-2">
+            <form className="grid grid-cols-1 gap-2" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label><span className="text-red-800">*</span> Nombre y Apellido: </label>
-                    <input type="text" className="mt-2 input w-full  validator" placeholder="Nombre y Apellido" required minLength={3} maxLength={30} title="Debe tener entre 3 y 30 caracteres"
-
+                    <input type="text" className={`mt-2 input w-full 
+    ${errors.nombre && (dirtyFields.nombre) ? 'border-red-500 focus:border-red-500' :
+                            dirtyFields.nombre ? 'border-green-500' : ''}
+  `} placeholder="Nombre y Apellido"
+                        {...register('nombre', {
+                            required: 'Este campo es obligatorio',
+                            minLength: {
+                                value: 3,
+                                message: 'Debe tener como mínimo 3 caracteres'
+                            },
+                            maxLength: {
+                                value: 30,
+                                message: 'Debe tener como máximo 30 caracteres'
+                            }
+                        })}
                     />
-                    <p className="validator-hint">
-                        Debe tener entre 3 y 30 caracteres</p>
+                    {errors.nombre && (<p className='text-red-500'>{errors.nombre.message} </p>)}
+
                 </div>
                 <div>
                     <label> <span className="text-red-800">*</span> Celular : </label>
-                    <input type="tel" className="mt-2 input w-full validator tabular-nums" placeholder="3815633407" minLength={10} maxLength={10} required title="Tienen que ser 10 dígitos" pattern="\d{10}" inputMode="numeric" />
-                    <p className="validator-hint">Tiene que ser 10 dígitos</p>
+                    <input type="tel" className={`mt-2 input w-full 
+    ${errors.celular && (dirtyFields.celular) ? 'border-red-500 focus:border-red-500' :
+                            dirtyFields.celular ? 'border-green-500' : ''}
+  `} placeholder="3815633407" title="Tienen que ser 10 dígitos"
+                        {...register('celular', {
+                            required: 'El número es obligatorio', minLength: { value: 10, message: 'Debe tener exactamente 10 dígitos' }, maxLength: { value: 10, message: 'Debe tener exactamente 10 dígitos' }, pattern: {
+                                value: /^\d{10}$/,
+                                message: 'Solo se permiten números'
+                            },
+                        })}
+                    />
+                    {errors.celular && (
+                        <p className='text-red-500'>
+                            {errors.celular.message}
+
+                        </p>
+                    )}
                 </div>
                 <div>
                     <label> <span className="text-red-800">*</span> Consulta: </label>
-                    <textarea className="mt-2 input validator w-full" placeholder="Hola! Buenos dias! Estoy buscando..." minLength={5}
-                        maxLength={300}
-                        title="Debe tener entre 5 y 300 caracteres" required />
-                    <p className="validator-hint"  >Debe tener entre 5 y 300 caracteres</p>
+                    <textarea className={`mt-2 input w-full 
+    ${errors.consulta && (dirtyFields.consulta) ? 'border-red-500 focus:border-red-500' :
+                            dirtyFields.consulta ? 'border-green-500' : ''}
+  `} placeholder="Hola! Buenos dias! Estoy buscando..."
+                        {...register('consulta', {
+                            required: 'La consulta es obligatoria', minLength: {
+                                value: 4,
+                                message: 'El mínimo de caracteres es 4'
+                            },
+                            maxLength: { value: 250, message: 'El mínimo de caracteres es 250' }
+
+                        })}
+
+                    />
+
+                    {errors.consulta && (
+                        <p className='text-red-500'>{errors.consulta.message}</p>
+                    )}
+
+
                 </div>
                 <div className="flex justify-end">
                     <button className="btn text-white bg-red-800 w-1/3">Enviar</button>
