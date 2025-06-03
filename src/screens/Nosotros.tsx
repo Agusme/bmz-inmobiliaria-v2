@@ -1,4 +1,5 @@
 import CountUp from 'react-countup';
+import RedesSociales from '../components/RedesSociales';
 
 const Nosotros = () => {
     return (
@@ -44,13 +45,16 @@ const Nosotros = () => {
                         <CountUp
                             end={3000}
                             duration={5}
-                            className="font-bold  text-red-800 text-4xl"
+                            className="font-bold  text-red-800 text-4xl "
                         />
                     </div>
                     <p className='text-center'>Clientes felices</p>
                    </div>
                 </div>
+                <div className='my-5 pt-5'>
+                    <RedesSociales iconColor="text-slate-700" iconSize='text-5xl' ></RedesSociales>
 
+                </div>
             </div>
         </div>
     );
