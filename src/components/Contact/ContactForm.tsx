@@ -40,7 +40,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="my-4 p-5">
+        <div className="p-5">
             <h2 className="uppercase text-center text-xl text-red-800">Dejanos tus datos</h2>
             <div className="text-gray-300 my-5 border-y py-10 mx-auto h-40">
                 <p className=" text-black">Queremos ayudarte a encontrar la propiedad que estás buscando. Déjanos tus datos para que podamos contactarte y brindarte asesoramiento personalizado a la brevedad.</p>
