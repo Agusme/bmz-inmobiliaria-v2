@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 type FormData = {
     nombre: string;
@@ -6,20 +8,35 @@ type FormData = {
     consulta: string;
 }
 
-
 export default function ContactForm() {
 
     const { register, handleSubmit, formState: { errors, dirtyFields }, reset } = useForm<FormData>()
 
     const onSubmit = (data: FormData) => {
 
-        console.log('Formulado enviado', data)
-        reset({}, {
-            keepErrors: false,
-            keepDirty: false,
-            keepTouched: false,
-            keepIsSubmitted: false
-        })
+        emailjs.send('service_n3v74fh', 'template_g7q28lw', {
+            nombre: data.nombre, celular: data.celular, consulta: data.consulta
+        }, 'BDtEaJzGHui804FZE')
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Mensaje enviado',
+                    text: 'Gracias por contactarnos.',
+                      timer: 3000,  
+
+                });
+                reset();
+            })
+            .catch(() => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.',
+                    confirmButtonColor: '#d32f2f',
+                      timer: 2000,         
+
+                });
+            });
     }
 
     return (
@@ -48,7 +65,6 @@ export default function ContactForm() {
                         })}
                     />
                     {errors.nombre && (<p className='text-red-500'>{errors.nombre.message} </p>)}
-
                 </div>
                 <div>
                     <label> <span className="text-red-800">*</span> Celular : </label>
