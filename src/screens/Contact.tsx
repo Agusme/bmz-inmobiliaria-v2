@@ -3,8 +3,8 @@ import ContactoInfo from "../components/Contact/ContactoInfo"
 
 export default function Contact() {
   return (
-    <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 ">
+    <div className="container bg-[url('/Fondo.jpeg')] bg-cover bg-center flex justify-center items-start p-10 mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 bg-white rounded-lg ">
         <ContactForm />
         <ContactoInfo />
       </div>

@@ -2,7 +2,7 @@ import RedesSociales from "../RedesSociales";
 
 export default function ContactoInfo() {
     return (
-        <div className="p-5">
+        <div className=" p-5">
             <h2 className="uppercase text-center text-xl text-red-800">contáctanos</h2>
             <div className="text-gray-300 my-5 border-y py-10 mx-auto h-40">
                 <p className= "text-black ">En BMZ Propiedades, hacemos de tu búsqueda una experiencia simple, clara y confiable.</p>
