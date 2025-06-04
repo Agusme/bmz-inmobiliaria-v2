@@ -1,6 +1,8 @@
 import { IoHappyOutline } from "react-icons/io5";
 import FormAdmin from "../components/Admin/FormAdmin";
 
+
+
 export default function Admin() {
     return (
         <div className="container mx-auto px-10 py-2">

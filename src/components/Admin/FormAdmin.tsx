@@ -1,5 +1,17 @@
 
+type FormData = {
+  typeProperty : string,
+  typeTransaction: string,
+  bathroom: number,
+  bedroom: number,
+  location: string,
+  description: string,
+  map: string,
+ images: string[];  
+}
+
 export default function FormAdmin() {
+
     return (
         <div className="bg-slate-700 bg-opacity-10 rounded-lg">
             <form className="p-10 grid  md:grid-cols-2 gap-x-10 gap-y-5 mx-auto max-w-6xl">
