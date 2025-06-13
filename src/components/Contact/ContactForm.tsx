@@ -22,7 +22,7 @@ export default function ContactForm() {
                     icon: 'success',
                     title: 'Mensaje enviado',
                     text: 'Gracias por contactarnos.',
-                      timer: 3000,  
+                    timer: 3000,
 
                 });
                 reset();
@@ -33,7 +33,7 @@ export default function ContactForm() {
                     title: 'Oops...',
                     text: 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.',
                     confirmButtonColor: '#d32f2f',
-                      timer: 2000,         
+                    timer: 2000,
 
                 });
             });
