@@ -16,7 +16,7 @@ type FormData = {
 
 export default function FormAdmin() {
     
-    const { register, handleSubmit, reset, formState: { errors, dirtyFields } } = useForm<FormData>({resolver: yupResolver(propertySchema)});
+    const { register, handleSubmit, reset, formState: { errors, dirtyFields, isValid } } = useForm<FormData>({resolver: yupResolver(propertySchema), mode:'onChange'});
     
     
     const inputClass=(fieldName: keyof FormData)=>{
@@ -36,8 +36,8 @@ export default function FormAdmin() {
     }
 
     return (
-        <div className="bg-slate-700 bg-opacity-10 rounded-lg">
-            <form className="p-10 grid  md:grid-cols-2 gap-x-10 gap-y-5 mx-auto max-w-6xl" onSubmit={handleSubmit(onSubmit)} >
+        <div className="bg-slate-700  bg-opacity-10 rounded-lg">
+            <form className="px-5  py-10 grid  md:grid-cols-2 gap-x-10 gap-y-5 mx-auto max-w-6xl" onSubmit={handleSubmit(onSubmit)} >
                 <div className="col-span-2 md:col-span-1">
                     <label htmlFor="typeProperty"
                         className={`select w-full ${inputClass('typeProperty') }`}
@@ -136,7 +136,7 @@ export default function FormAdmin() {
                     {errors.description && (<p className="text-red-500 mt-1 text-sm">{errors.description.message} </p>)}
                 </div>
                 <div className="flex justify-end md:col-start-2">
-                    <button className="btn px-10 btn-neutral btn-outline" type="submit"> Guardar</button>
+                    <button className="btn px-10 btn-neutral btn-outline" disabled={!isValid}  type="submit"> Guardar</button>
                 </div>
             </form>
         </div>
