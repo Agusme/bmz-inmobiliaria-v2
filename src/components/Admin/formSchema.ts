@@ -14,8 +14,8 @@ export const propertySchema = yup.object({
           .typeError("Seleccione la cantidad de dormitorios")
 
     .required('Seleccione cantidad de dormitorios'),
-  destacada: yup.string().required("Seleccione una opción"),
-  location: yup
+/*   destacada: yup.string().required("Seleccione una opción"),
+ */  location: yup
     .string()
     .required("Indique la localidad")
     .min(5, "Mínimo 5 caracteres")
@@ -29,8 +29,9 @@ export const propertySchema = yup.object({
     .url('Ingresa una URL válida'),
   images: yup
     .mixed<FileList>()
-    .required("Ingrese las imágenes")
-    .test("fileCount", "Ingrese al menos una imagen", (value) => {
+    .required("Debes subir al menos una imagen")
+    .test("fileList", "Debes subir al menos una imagen", (value) => {
       return value instanceof FileList && value.length > 0;
     }),
+    
 })

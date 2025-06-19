@@ -1,38 +1,46 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form"
 import { propertySchema } from "./formSchema";
+import { PropertyFormData } from "../../types/FormDataTypes";
+import { createProperty } from "../../services/PropertyServices";
 
-type FormData = {
-    typeProperty: string,
-    typeTransaction: string,
-    bathroom: number,
-    bedroom: number,
-    destacada: string,
-    location: string,
-    description: string,
-    map: string,
-    images: FileList
-}
 
 export default function FormAdmin() {
-    
-    const { register, handleSubmit, reset, formState: { errors, dirtyFields, isValid } } = useForm<FormData>({resolver: yupResolver(propertySchema), mode:'onChange'});
-    
-    
-    const inputClass=(fieldName: keyof FormData)=>{
+
+    const { register, handleSubmit, reset, formState: { errors, dirtyFields, isValid } } = useForm<PropertyFormData>({ resolver: yupResolver(propertySchema), mode: 'onChange' });
+
+
+    const inputClass = (fieldName: keyof PropertyFormData) => {
         const error = errors[fieldName];
-        const dirty= dirtyFields[fieldName];
-        return dirty? error? 'border-red-500': 'border-green-500':''
-    
+        const dirty = dirtyFields[fieldName];
+        return dirty ? error ? 'border-red-500' : 'border-green-500' : ''
+
     }
 
-    const onSubmit = (data: FormData) => {
-        const parsedData = {
-            ...data,
-            destacada: data.destacada === 'true',
+    const onSubmit = async (data: PropertyFormData) => {
+
+        const formDataToSend = new FormData()
+
+        formDataToSend.append('typeProperty', data.typeProperty)
+        formDataToSend.append('typeTransaction', data.typeTransaction)
+        formDataToSend.append('bathroom', data.bathroom.toString())
+        formDataToSend.append('bedroom', data.bedroom.toString())
+        formDataToSend.append('location', data.location)
+        /*         formDataToSend.append('destacada', data.destacada === 'true' ? "true" : "false") */
+        formDataToSend.append('map', data.map)
+        formDataToSend.append('description', data.description)
+        for (let i = 0; i < data.images.length; i++) {
+            formDataToSend.append("images", data.images[i])
         }
-        console.log('formulario enviado', parsedData)
-        reset()
+        try {
+            await createProperty(formDataToSend);
+            alert('Propiedad creada con exito')
+            reset()
+        } catch (error) {
+            console.error('Error al crear propiedad: ', error)
+            alert('Error al creat propiedad')
+
+        }
     }
 
     return (
@@ -40,33 +48,33 @@ export default function FormAdmin() {
             <form className="px-5  py-10 grid  md:grid-cols-2 gap-x-10 gap-y-5 mx-auto max-w-6xl" onSubmit={handleSubmit(onSubmit)} >
                 <div className="col-span-2 md:col-span-1">
                     <label htmlFor="typeProperty"
-                        className={`select w-full ${inputClass('typeProperty') }`}
+                        className={`select w-full ${inputClass('typeProperty')}`}
                     >
                         <span className="label">Tipo de Propiedad</span>
                         <select id="typeProperty" defaultValue="" {...register('typeProperty')}
                         >
                             <option disabled value="">Seleccionar</option>
-                            <option value="casa">Casa</option>
-                            <option value="departamento">Departamento</option>
-                            <option value="terreno">Terreno</option>
-                            <option value="local">Local</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Departamento">Departamento</option>
+                            <option value="Terreno">Terreno</option>
+                            <option value="Local">Local</option>
                         </select>
                     </label>
                     {errors.typeProperty && (<p className="text-red-500 mt-1 text-sm"> {errors.typeProperty.message} </p>)}
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                    <label className={`select w-full ${inputClass('typeTransaction') }`} >
+                    <label className={`select w-full ${inputClass('typeTransaction')}`} >
                         <span className="label">Tipo de Transacción</span>
                         <select defaultValue="" {...register('typeTransaction')}>
                             <option disabled value="">Seleccionar</option>
-                            <option value="venta" >Venta</option>
-                            <option value="alquiler">Alquiler</option>
+                            <option value="Venta" >Venta</option>
+                            <option value="Alquiler">Alquiler</option>
                         </select>
                     </label>
                     {errors.typeTransaction && (<p className="text-red-500 mt-1 text-sm">{errors.typeTransaction.message} </p>)}
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                    <label className={`select w-full ${inputClass('bathroom') }`} >
+                    <label className={`select w-full ${inputClass('bathroom')}`} >
                         <span className="label">Baños</span>
                         <select defaultValue='' {...register('bathroom')}>
                             <option value="" disabled>Seleccionar</option>
@@ -81,7 +89,7 @@ export default function FormAdmin() {
                     {errors.bathroom && (<p className="text-red-500 mt-1 text-sm">{errors.bathroom.message} </p>)}
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                    <label className={`select w-full ${inputClass('bedroom') } `} >
+                    <label className={`select w-full ${inputClass('bedroom')} `} >
                         <span className="label">Dormitorios</span>
                         <select defaultValue='' {...register('bedroom')}
                         ><option disabled value="">Seleccionar</option>
@@ -94,8 +102,8 @@ export default function FormAdmin() {
                         </select>
                     </label>                                    {errors.bedroom && (<p className="text-red-500 mt-1 text-sm">{errors.bedroom.message} </p>)}
                 </div>
-                <div className="col-span-2 md:col-span-1">
-                     <label className={`select w-full ${inputClass('destacada') }`} >
+           {/*      <div className="col-span-2 md:col-span-1">
+                    <label className={`select w-full ${inputClass('destacada')}`} >
                         <span className="label">Destacada</span>
                         <select defaultValue='' {...register('destacada')}>
                             <option disabled value='' >Seleccionar</option>
@@ -105,10 +113,10 @@ export default function FormAdmin() {
                     </label>
                     {errors.destacada && (<p className="text-red-500 mt-1 text-sm">{errors.destacada.message} </p>)}
 
-                </div>
+                </div> */}
                 <div className="col-span-2 md:col-span-1">
 
-                       <label className={`select w-full ${inputClass('location') } `} >
+                    <label className={`select w-full ${inputClass('location')} `} >
                         <span className="label">Localidad</span>
                         <input type="text" placeholder="Ej: Yerba Buena" {...register('location')} />
                     </label>
@@ -117,7 +125,7 @@ export default function FormAdmin() {
                 </div>
                 <div className="col-span-2 md:col-span-1">
 
-                     <label className={`select w-full ${inputClass('map') } `} >
+                    <label className={`select w-full ${inputClass('map')} `} >
                         <span className="label">Mapa</span>
                         <input type="text" placeholder="URL" {...register('map')} />
                     </label>
@@ -126,17 +134,17 @@ export default function FormAdmin() {
                 </div>
                 <div className="col-span-2 md:col-span-1">
 
-                    <input type="file" multiple    className={`file-input w-full ${inputClass('images') }`} {...register('images')} />
+                    <input type="file" multiple className={`file-input w-full ${inputClass('images')}`} {...register('images')} />
                     {errors.images && (<p className="text-red-500 mt-1 text-sm">{errors.images.message} </p>)}
 
                 </div>
                 <div className="col-span-2 md:col-span-1">
 
-                    <textarea    className={`textarea w-full ${inputClass('typeProperty') } `} placeholder="Describe la propiedad..." {...register('description')} ></textarea>
+                    <textarea className={`textarea w-full ${inputClass('typeProperty')} `} placeholder="Describe la propiedad..." {...register('description')} ></textarea>
                     {errors.description && (<p className="text-red-500 mt-1 text-sm">{errors.description.message} </p>)}
                 </div>
                 <div className="flex justify-end md:col-start-2">
-                    <button className="btn px-10 btn-neutral btn-outline" disabled={!isValid}  type="submit"> Guardar</button>
+                    <button className="btn px-10 btn-neutral btn-outline" disabled={!isValid} type="submit"> Guardar</button>
                 </div>
             </form>
         </div>
