@@ -26,7 +26,7 @@ export default function FormAdmin() {
         formDataToSend.append('bathroom', data.bathroom.toString())
         formDataToSend.append('bedroom', data.bedroom.toString())
         formDataToSend.append('location', data.location)
-        /*         formDataToSend.append('destacada', data.destacada === 'true' ? "true" : "false") */
+       formDataToSend.append('destacada', data.destacada) 
         formDataToSend.append('map', data.map)
         formDataToSend.append('description', data.description)
         for (let i = 0; i < data.images.length; i++) {
@@ -102,7 +102,7 @@ export default function FormAdmin() {
                         </select>
                     </label>                                    {errors.bedroom && (<p className="text-red-500 mt-1 text-sm">{errors.bedroom.message} </p>)}
                 </div>
-           {/*      <div className="col-span-2 md:col-span-1">
+        <div className="col-span-2 md:col-span-1">
                     <label className={`select w-full ${inputClass('destacada')}`} >
                         <span className="label">Destacada</span>
                         <select defaultValue='' {...register('destacada')}>
@@ -113,7 +113,7 @@ export default function FormAdmin() {
                     </label>
                     {errors.destacada && (<p className="text-red-500 mt-1 text-sm">{errors.destacada.message} </p>)}
 
-                </div> */}
+                </div> 
                 <div className="col-span-2 md:col-span-1">
 
                     <label className={`select w-full ${inputClass('location')} `} >

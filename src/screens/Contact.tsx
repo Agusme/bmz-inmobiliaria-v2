@@ -8,8 +8,6 @@ export default function Contact() {
         <ContactForm />
         <ContactoInfo />
       </div>
-
-
     </div>
   )
 }

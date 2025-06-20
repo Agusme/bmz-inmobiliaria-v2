@@ -9,7 +9,7 @@ export default function Navbar() {
                 </NavLink>
             </div>
             <div className="flex-none hidden lg:flex uppercase">
-                <ul className="menu menu-horizontal font-thin p-0">
+                <ul className="menu menu-horizontal  p-0">
                 <li>
                     <NavLink
                         to="/"
