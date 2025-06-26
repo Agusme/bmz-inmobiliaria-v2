@@ -5,6 +5,8 @@ export default function Propiedades() {
     <div>
       <PropiedadesCarousel tipoPropiedad="Departamento" titulo='Departamentos'></PropiedadesCarousel>
       <PropiedadesCarousel tipoPropiedad="Casa" titulo='Casas'></PropiedadesCarousel>
+      <PropiedadesCarousel tipoPropiedad="Terreno" titulo='Terrenos'></PropiedadesCarousel>
+      <PropiedadesCarousel tipoPropiedad="Local" titulo='Locales'></PropiedadesCarousel>
     </div>
   )
 }
