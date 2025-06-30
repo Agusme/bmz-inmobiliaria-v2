@@ -7,4 +7,12 @@
 .slick-prev:before,
 .slick-next:before {
   color: #383838ce !important;
+ 
+}
+
+@media (max-width: 768px) {
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
 }
