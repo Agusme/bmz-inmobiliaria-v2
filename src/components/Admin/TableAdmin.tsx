@@ -5,7 +5,7 @@ import { FaEdit, FaTrash } from "react-icons/fa"
 
 export default function TableAdmin() {
 
-  const { propiedades, loading, fetchProperties } = usePropertyStore()
+  const { propiedades, loading, fetchProperties, deleteProperty } = usePropertyStore()
 
 
   useEffect(() => { fetchProperties() }, [])
@@ -37,7 +37,10 @@ export default function TableAdmin() {
                 <td>{prop.bathroom}</td>
                 <td>{prop.bedroom}</td>
                 <td><div className="md:flex gap-2" >
-                  <FaTrash size={20} color="red"/><FaEdit size={20} color="green" />
+                  <button onClick={() => deleteProperty(prop._id)}>
+                    <FaTrash size={20} color="red" />
+                  </button>
+                  <FaEdit size={20} color="green" />
                 </div>
                 </td>
               </tr>
