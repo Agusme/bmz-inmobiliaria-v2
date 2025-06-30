@@ -7,6 +7,7 @@ import { BiSolidBath } from "react-icons/bi";
 import { IoMdBed } from "react-icons/io";
 
 
+
 export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad', titulo = 'titulo' }) {
 
   const [propiedades, setPropiedades] = useState<Property[]>([]);
@@ -38,7 +39,6 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-  
     autoplay: true,
     autoplaySpeed: 1500,
     centerMode: true,
@@ -69,7 +69,7 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
   };
 
   return (
-    <div className="container my-5 py-5 bg-red-300">
+    <div className="container my-5 py-5">
       <h2 className="text-center uppercase font-semibold text-zinc-500 text-2xl">{titulo} </h2>
       <div className="border-b-zinc-500 w-5  border border-b-2 mx-auto my-3 "></div>
       <div className="max-w-6xl mx-auto px-4">
@@ -87,7 +87,7 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
         </div>) : <Slider {...settings}>
           {propiedades.map((p) => (
             <div key={p._id} className="px-2">
-              <div className=" transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-lg overflow-hidden bg-white">
+              <div className=" mb-6 transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-lg overflow-hidden bg-white">
                 <div className="relative">
                   <a
                     href={`https://wa.me/5491123456789?text=${encodeURIComponent(

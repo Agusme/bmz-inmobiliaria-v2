@@ -4,3 +4,7 @@
 @import 'swiper/css';
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
+.slick-prev:before,
+.slick-next:before {
+  color: #383838ce !important;
+}
