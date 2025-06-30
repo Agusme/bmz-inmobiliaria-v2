@@ -1,41 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Slider from "react-slick";
-import { getProperties } from "../../services/PropertyServices";
-import { Property } from "../../types/PropertyTypes";
 import { BiSolidBath } from "react-icons/bi";
 import { IoMdBed } from "react-icons/io";
+import { usePropertyStore } from "../../store/propertyStore";
 
 
 
 export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad', titulo = 'titulo' }) {
 
-  const [propiedades, setPropiedades] = useState<Property[]>([]);
-  const [loading, setLoading] = useState(true)
-
-  const filtrarTipoDePropiedad = async () => {
-    try {
-      const data = await getProperties();
-      const propiedadesFiltradas = data.filter(p => p.typeProperty === tipoPropiedad);
-      setPropiedades(propiedadesFiltradas)
-      setLoading(true);
-    } catch (error) {
-      console.error('Error al filtrar propiedades', error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
+  const { propiedades, loading, fetchProperties } = usePropertyStore()
 
   useEffect(() => {
-    filtrarTipoDePropiedad()
-  }, [tipoPropiedad]);
+    fetchProperties();
+  }, []);
 
+  const propiedadesFiltradas = propiedades.filter((prop) => prop.typeProperty === tipoPropiedad)
 
 
   const settings = {
     dots: true,
-    infinite: propiedades.length > 1,
+    infinite: propiedadesFiltradas.length > 1,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -85,7 +70,7 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
             </div>
           ))}
         </div>) : <Slider {...settings}>
-          {propiedades.map((p) => (
+          {propiedadesFiltradas.map((p) => (
             <div key={p._id} className="px-2">
               <div className=" mb-6 transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-lg overflow-hidden bg-white">
                 <div className="relative">
