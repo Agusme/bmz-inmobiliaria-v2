@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { getProperties } from "../../services/PropertyServices";
 import { Property } from "../../types/PropertyTypes";
+import { BiSolidBath } from "react-icons/bi";
+import { IoMdBed } from "react-icons/io";
 
 
 export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad', titulo = 'titulo' }) {
@@ -28,12 +30,15 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
     filtrarTipoDePropiedad()
   }, [tipoPropiedad]);
 
+
+
   const settings = {
     dots: true,
     infinite: propiedades.length > 1,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+  
     autoplay: true,
     autoplaySpeed: 1500,
     centerMode: true,
@@ -64,9 +69,9 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
   };
 
   return (
-    <div className="container my-5 py-5">
-      <h2 className="text-center uppercase font-semibold text-gray-600 text-2xl">{titulo} </h2>
-      <div className="border-b-gray-600 w-5  border border-b-2 mx-auto my-3  "></div>
+    <div className="container my-5 py-5 bg-red-300">
+      <h2 className="text-center uppercase font-semibold text-zinc-500 text-2xl">{titulo} </h2>
+      <div className="border-b-zinc-500 w-5  border border-b-2 mx-auto my-3 "></div>
       <div className="max-w-6xl mx-auto px-4">
         {loading ? (<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {[0, 1, 2, 3].map((i) => (
@@ -90,7 +95,7 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-warning absolute top-56 right-2 text-xs px-4 py-2 uppercase shadow-2xl text-black rounded-3xl"
+                    className="btn bg-yellow-400 absolute top-56 right-2 text-xs px-4 py-2 uppercase shadow-2xl rounded-3xl "
                   >
                     consultar precio
                   </a>
@@ -100,9 +105,15 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
                   alt={p.location}
                   className="rounded-t-xl mx-auto w-full h-60 object-cover"
                 />
-                <div className="p-2 mt-4">
-                  <p className="uppercase text-sm">{p.description.length > 27 ? `${p.description.slice(0, 27)}...` : p.description} </p>
-                  <h3 className="mb-1 uppercase h-20 font-medium text-sm">{p.location}</h3>
+                <div className="px-2 pt-6 pb-2 text-sm uppercase text-zinc-500">
+                  <p>{p.description.length > 27 ? `${p.description.slice(0, 27)}...` : p.description} </p>
+                  <h3 className="mb-1 h-12 font-medium ">{p.location}</h3>
+                  <div className="flex">
+                    <p className="flex text-xs me-5">{p.bathroom} <BiSolidBath size={15} />
+                    </p>
+                    <p className="flex text-xs ">{p.bedroom} <IoMdBed size={17} />
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
