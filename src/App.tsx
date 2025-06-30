@@ -6,6 +6,7 @@ import Contact from "./screens/Contact"
 import Nosotros from "./screens/Nosotros"
 import Propiedades from "./screens/Propiedades"
 import Admin from "./screens/Admin"
+import TableAdmin from "./components/Admin/TableAdmin"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/propiedades" element={<Propiedades />} />
           <Route path="/admin" element={<Admin/>} />
+          <Route path="/admin/propiedadesCargadas" element={<TableAdmin/>} />
           </Routes>
         </div>
         <Footer />
