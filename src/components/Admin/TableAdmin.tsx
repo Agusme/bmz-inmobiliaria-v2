@@ -21,7 +21,12 @@ export default function TableAdmin() {
 
   useEffect(() => { fetchProperties() }, [])
 
-  if (loading) return <p>Cargando propiedades...</p>
+if(loading){
+  return <div className="flex items-center justify-center h-screen">
+    <p>Cargando Propiedades<span className="loading loading-dots loading-md"></span>
+</p>
+  </div>
+}
 
   return (
     <div className="container mx-auto p-4 ">
