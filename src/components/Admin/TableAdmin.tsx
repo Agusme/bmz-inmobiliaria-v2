@@ -1,12 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { usePropertyStore } from "../../store/propertyStore"
 import { FaEdit, FaTrash } from "react-icons/fa"
+import { Property } from "../../types/PropertyTypes"
+import EditProperty from "./EditProperty"
 
 export default function TableAdmin() {
 
   const { propiedades, loading, fetchProperties, deleteProperty } = usePropertyStore()
+  const [propiedadSeleccionada, setPropiedadSeleccionada] = useState<Property | null>(null)
 
+  /* useref para abrir modal en typescript  */
+  const modalRef = useRef<HTMLDialogElement | null>(null);
+  const abrirModal = (prop: Property) => {
+    setPropiedadSeleccionada(prop)
+    if (modalRef.current) {
+      modalRef.current.showModal();
+    }
+  };
 
   useEffect(() => { fetchProperties() }, [])
 
@@ -37,10 +48,12 @@ export default function TableAdmin() {
                 <td>{prop.bathroom}</td>
                 <td>{prop.bedroom}</td>
                 <td><div className="md:flex gap-2" >
-                  <button onClick={() => deleteProperty(prop._id)}>
-                    <FaTrash size={20} color="red" />
+                  <button className="btn" onClick={() => deleteProperty(prop._id)}>
+                    <FaTrash size={20} />
                   </button>
-                  <FaEdit size={20} color="green" />
+                  <button onClick={() => abrirModal(prop)} className="btn">
+                    <FaEdit size={20} />
+                  </button>
                 </div>
                 </td>
               </tr>
@@ -49,6 +62,10 @@ export default function TableAdmin() {
           </tbody>
         </table>
       </div>
+      {/* Modal de editar */}
+      <dialog ref={modalRef} className="modal">
+        {propiedadSeleccionada && <EditProperty propiedad={propiedadSeleccionada} onClose={() => modalRef.current?.close()} />
+        }      </dialog>
     </div>
   )
 }
