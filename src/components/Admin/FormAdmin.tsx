@@ -106,20 +106,8 @@ export default function FormAdmin() {
                     </label>                                    {errors.bedroom && (<p className="text-red-500 mt-1 text-sm">{errors.bedroom.message} </p>)}
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                    <label className={`select w-full ${inputClass('destacada')}`} >
-                        <span className="label">Destacada</span>
-                        <select defaultValue='' {...register('destacada')}>
-                            <option disabled value='' >Seleccionar</option>
-                            <option value='true'>Si</option>
-                            <option value='false'>No</option>
-                        </select>
-                    </label>
-                    {errors.destacada && (<p className="text-red-500 mt-1 text-sm">{errors.destacada.message} </p>)}
 
-                </div>
-                <div className="col-span-2 md:col-span-1">
-
-                    <label className={`select w-full ${inputClass('location')} `} >
+                    <label className={`input w-full ${inputClass('location')} `} >
                         <span className="label">Localidad</span>
                         <input type="text" placeholder="Ej: Yerba Buena" {...register('location')} />
                     </label>
@@ -133,7 +121,6 @@ export default function FormAdmin() {
                         <input type="text" placeholder="URL" {...register('map')} />
                     </label>
                     {errors.map && (<p className="text-red-500 mt-1 text-sm">{errors.map.message} </p>)}
-
                 </div>
                 <div className="col-span-2 md:col-span-1">
 
