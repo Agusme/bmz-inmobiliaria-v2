@@ -91,4 +91,6 @@ export const usePropertyStore = create<PropertyStore>((set) => ({
     console.error("Error al actualizar propiedad:", error);
     }
   }
+
+  
 }));

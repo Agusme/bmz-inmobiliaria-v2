@@ -46,4 +46,15 @@ export const updatePropertyService = async (id:string,  updatedData: Partial<Pro
         console.error("Error al editar propiedad:", error);
 
   }
+
+};
+
+export const searchPropertyService = async()=>{
+  try {
+    const res = await axios.get(`${API_BASE_URL}/search`)
+    return res.data
+  } catch (error) {
+    console.error("Error al eliminar propiedad:", error);
+    throw error;
+  }
 }
