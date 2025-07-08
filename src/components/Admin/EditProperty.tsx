@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Property } from "../../types/PropertyTypes"
 import { useEffect } from "react";
+import { usePropertyStore } from "../../store/propertyStore";
+import Swal from "sweetalert2";
 
 type Props = {
   propiedad: Property | null;
@@ -8,17 +10,34 @@ type Props = {
 }
 export default function EditProperty({ propiedad, onClose }: Props) {
 
-  const { register, reset } = useForm({
+const {updateProperty,   fetchProperties}= usePropertyStore()
+
+  const { register, reset, handleSubmit } = useForm({
     defaultValues: {
       typeProperty: propiedad?.typeProperty,
       typeTransacion: propiedad?.typeTransaction,
       bathroom: propiedad?.bathroom,
-      bedroom: propiedad?.bathroom,
+      bedroom: propiedad?.bedroom,
       location: propiedad?.location,
       description: propiedad?.description,
       map: propiedad?.map,
     }
   })
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const onSubmit = (data: any) => {
+  if (!propiedad?._id) return;
+
+  updateProperty(propiedad._id, data);
+  fetchProperties();
+  onClose?.();
+
+  Swal.fire({
+    title: "Propiedad editada!",
+    icon: "success",
+    timer: 2000,
+  });
+};
 
   useEffect(() => {
     reset({
@@ -31,7 +50,7 @@ export default function EditProperty({ propiedad, onClose }: Props) {
 
     <div className="modal-box">
       <h3 className="text-lg font-bold">Editar Propiedad</h3>
-      <form className="px-5  py-10 grid   gap-x-10 gap-y-5 mx-auto max-w-6xl"  >
+      <form className="px-5  py-10 grid   gap-x-10 gap-y-5 mx-auto max-w-6xl" onSubmit={handleSubmit(onSubmit)} >
         <div className="col-span-2 md:col-span-1">
           <label htmlFor="typeProperty"
             className={`select w-full`}
@@ -100,11 +119,14 @@ export default function EditProperty({ propiedad, onClose }: Props) {
           </label>
 
         </div>
+        <div className="flex justify-end">
+          <button type="submit" className="btn btn-success " >Guardar Cambios</button>
+        </div>
       </form>
 
 
       <div className="modal-action">
-        <label htmlFor="my_modal_6" className="btn" onClick={() => onClose()}>Close!</label>
+        <label htmlFor="my_modal_6" className="btn" onClick={() => onClose()}>Cerrar</label>
       </div>
     </div>
   )

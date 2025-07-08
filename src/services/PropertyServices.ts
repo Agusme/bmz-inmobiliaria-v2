@@ -37,3 +37,13 @@ export const deletePropertyService = async (id: string) => {
     throw error;
   }
 };
+
+export const updatePropertyService = async (id:string,  updatedData: Partial<Property>)=>{
+  try {
+    const res= await axios.put(`${API_BASE_URL}/property/${id}`, updatedData)
+    return res.data;
+  } catch (error) {
+        console.error("Error al editar propiedad:", error);
+
+  }
+}
