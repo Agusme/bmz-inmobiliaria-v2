@@ -54,7 +54,7 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
   };
 
   return (
-    <div className="container my-5 py-5">
+    <div className="container my-5 py-5  mx-auto">
       <h2 className="text-center uppercase font-semibold text-zinc-500 text-2xl">{titulo} </h2>
       <div className="border-b-zinc-500 w-5  border border-b-2 mx-auto my-3 "></div>
       <div className="max-w-6xl mx-auto px-4">
