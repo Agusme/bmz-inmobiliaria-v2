@@ -1,12 +1,16 @@
 import Carousel from "../components/Carousel";
-import PropDestacadas from "../components/PropDestacadas";
+import PropiedadesCarousel from "../components/Propiedades/PropiedadesCarousel";
+import Search from "../components/Search";
 
 export default function Home() {
  
   return (
      <div>
      <Carousel/>
-     <PropDestacadas/>
+     <Search></Search>
+     <PropiedadesCarousel tipoPropiedad="Departamento" titulo="Departamentos"></PropiedadesCarousel>
+     <PropiedadesCarousel tipoPropiedad="Casa" titulo="Casas"></PropiedadesCarousel>
+     <PropiedadesCarousel tipoPropiedad="Terreno" titulo="Terrenos"></PropiedadesCarousel>
     </div>
   )
 }

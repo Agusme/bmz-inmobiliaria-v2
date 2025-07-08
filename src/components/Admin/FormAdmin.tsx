@@ -25,7 +25,6 @@ export default function FormAdmin() {
         formDataToSend.append('bathroom', data.bathroom.toString())
         formDataToSend.append('bedroom', data.bedroom.toString())
         formDataToSend.append('location', data.location)
-        formDataToSend.append('destacada', data.destacada)
         formDataToSend.append('map', data.map)
         formDataToSend.append('description', data.description)
         for (let i = 0; i < data.images.length; i++) {
