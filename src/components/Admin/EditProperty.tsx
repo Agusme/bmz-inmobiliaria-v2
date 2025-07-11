@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Property } from "../../types/PropertyTypes"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePropertyStore } from "../../store/propertyStore";
 import Swal from "sweetalert2";
 
@@ -23,20 +23,34 @@ const {updateProperty,   fetchProperties}= usePropertyStore()
       map: propiedad?.map,
     }
   })
+const [files, setFiles] = useState<File[]>([]);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onSubmit = (data: any) => {
   if (!propiedad?._id) return;
 
-  updateProperty(propiedad._id, data);
-  fetchProperties();
-  onClose?.();
-
+  const formData = new FormData();
+  formData.append("typeProperty", data.typeProperty);
+ formData.append("typeTransacion", data.typeTransacion);
+  formData.append("bathroom", data.bathroom);
+  formData.append("bedroom", data.bedroom);
+  formData.append("location", data.location);
+  formData.append("description", data.description);
+  formData.append("map", data.map);
+ 
+  files.forEach((file)=> {
+    formData.append("images", file);
+  })
+ 
+  updateProperty(propiedad._id, formData);
+  
   Swal.fire({
     title: "Propiedad editada!",
     icon: "success",
     timer: 2000,
   });
+  fetchProperties();
+  onClose?.();
 };
 
   useEffect(() => {
@@ -116,6 +130,20 @@ const onSubmit = (data: any) => {
           <label className={`select w-full`} >
             <span className="label">Mapa</span>
             <input type="text" placeholder="URL" {...register('map')} />
+          </label>
+
+        </div>
+           <div className="col-span-2 md:col-span-1">
+
+          <label className={`select w-full`} >
+            <span className="label">Imagenes</span>
+<input type="file"  multiple        onChange={(e) => {
+  if (e.target.files) {
+    setFiles(Array.from(e.target.files));
+  }
+}}
+ />              
+
           </label>
 
         </div>

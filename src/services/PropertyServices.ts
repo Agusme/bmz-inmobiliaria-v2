@@ -38,7 +38,7 @@ export const deletePropertyService = async (id: string) => {
   }
 };
 
-export const updatePropertyService = async (id:string,  updatedData: Partial<Property>)=>{
+export const updatePropertyService = async (id:string,  updatedData: FormData)=>{
   try {
     const res= await axios.put(`${API_BASE_URL}/property/${id}`, updatedData)
     return res.data;

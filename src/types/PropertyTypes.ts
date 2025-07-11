@@ -9,4 +9,5 @@ export type Property = {
   map: string;
   typeProperty: string;
   typeTransaction: string;
+
 };

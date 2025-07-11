@@ -12,7 +12,7 @@ type PropertyStore = {
   loading: boolean;
   fetchProperties: () => Promise<void>;
   deleteProperty: (id: string) => Promise<void>;
-  updateProperty: (id: string,data: Partial<Property> ) => Promise<void>
+  updateProperty: (id: string,data: FormData  ) => Promise<void>
 };
 export const usePropertyStore = create<PropertyStore>((set) => ({
   propiedades: [],
@@ -80,9 +80,9 @@ export const usePropertyStore = create<PropertyStore>((set) => ({
     }
   },
 
-  updateProperty: async(id:string, data: Partial<Property>)=>{
+  updateProperty: async(id:string, data: FormData )=>{
     try {
-     const updated= await updatePropertyService(id,data);
+     const updated= await updatePropertyService(id, data);
      set((state)=>({
       propiedades:state.propiedades.map((p)=> p._id === id ? {...p, updated} : p)
      }))
