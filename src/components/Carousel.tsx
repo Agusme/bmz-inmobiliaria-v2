@@ -22,9 +22,9 @@ export default function Carousel() {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 1000,
         autoplay: true,
-        autoplaySpeed: 1500,
+        autoplaySpeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
@@ -38,7 +38,7 @@ export default function Carousel() {
                         <img
                             src={item.url}
                             alt={item.description}
-                            className="w-full h-[350px] object-cover"
+                            className="w-full h-[450px] object-cover"
                         />
                         <div className="absolute bottom-10 right-8 text-white uppercase font-semibold bg-black/40 py-2 px-16 ">
                             {item.description}
