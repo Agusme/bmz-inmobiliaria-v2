@@ -3,19 +3,24 @@ import { Property } from "../types/PropertyTypes";
 import {
   deletePropertyService,
   getProperties,
+  searchPropertyService,
   updatePropertyService,
 } from "../services/PropertyServices";
 import Swal from "sweetalert2";
+import { SearchParams } from "../types/SearchParamsTypes";
 
 type PropertyStore = {
   propiedades: Property[];
   loading: boolean;
+   searchResults: Property[];
   fetchProperties: () => Promise<void>;
   deleteProperty: (id: string) => Promise<void>;
-  updateProperty: (id: string,data: FormData  ) => Promise<void>
+  updateProperty: (id: string,data: FormData  ) => Promise<void>;
+  searchProperty: (params: SearchParams) => Promise<void>;
 };
 export const usePropertyStore = create<PropertyStore>((set) => ({
   propiedades: [],
+  searchResults:[],
   loading: false,
 
   fetchProperties: async () => {
@@ -89,6 +94,18 @@ export const usePropertyStore = create<PropertyStore>((set) => ({
     ;
     } catch (error) {
     console.error("Error al actualizar propiedad:", error);
+    }
+  },
+  searchProperty: async(params: SearchParams)=>{
+    try {
+        const { typeTransaction, typeProperty } = params;
+
+      const propiedadesEncontradas =await searchPropertyService({typeTransaction, typeProperty})
+
+      set({searchResults: propiedadesEncontradas})
+    } catch (error) {
+          console.error("Error al buscar propiedad:"+ error);
+
     }
   }
 

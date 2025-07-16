@@ -1,6 +1,7 @@
 // services/PropertyServices.ts
 import axios from "axios";
 import { Property } from "../types/PropertyTypes";
+import { SearchParams } from "../types/SearchParamsTypes";
 const API_BASE_URL = "https://backend-bmz.vercel.app/api";
 
 export const createProperty = async (formData: FormData) => {
@@ -49,10 +50,15 @@ export const updatePropertyService = async (id:string,  updatedData: FormData)=>
 
 };
 
-export const searchPropertyService = async()=>{
+export const searchPropertyService = async({ typeTransaction, typeProperty }: SearchParams)=>{
   try {
-    const res = await axios.get(`${API_BASE_URL}/search`)
-    return res.data
+     const res = await axios.get(`${API_BASE_URL}/search`, {
+            params: {
+                typeTransaction,
+                typeProperty,
+            },
+        })
+        return res.data
   } catch (error) {
     console.error("Error al eliminar propiedad:", error);
     throw error;

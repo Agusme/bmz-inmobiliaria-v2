@@ -7,6 +7,7 @@ import Nosotros from "./screens/Nosotros"
 import Propiedades from "./screens/Propiedades"
 import Admin from "./screens/Admin"
 import TableAdmin from "./components/Admin/TableAdmin"
+import PropertyFound from "./screens/PropertyFound"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/propiedades" element={<Propiedades />} />
           <Route path="/admin" element={<Admin/>} />
           <Route path="/admin/propiedadesCargadas" element={<TableAdmin/>} />
+          <Route path="/propiedadesEncontradas" element={<PropertyFound/>} />
           </Routes>
         </div>
         <Footer />
