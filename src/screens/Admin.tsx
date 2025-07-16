@@ -15,10 +15,6 @@ export default function Admin() {
         <Link to={'/admin/propiedadesCargadas'} className="btn bg-red-800 text-white rounded-lg absolute right-3 top-1/2 -translate-y-1/2 text-sm">Ver Propiedades</Link>
 
       </div>
-
-
-
-
       <div className="border border-b-0"></div>
       <FormAdmin />
     </div>
