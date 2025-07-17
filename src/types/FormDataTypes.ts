@@ -8,5 +8,4 @@ export type PropertyFormData = {
     description: string,
     map: string,
     images: FileList,
-    destacada:string,
 }

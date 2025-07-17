@@ -22,10 +22,10 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
     dots: true,
     infinite: propiedadesFiltradas.length > 1,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 2500,
     centerMode: true,
     centerPadding: "0px",
     responsive: [
@@ -93,12 +93,12 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
                 <div className="px-2 pt-6 pb-2 text-sm uppercase text-zinc-500">
                   <p>{p.description.length > 27 ? `${p.description.slice(0, 27)}...` : p.description} </p>
                   <h3 className="mb-1 h-12 font-medium ">{p.location}</h3>
-                  <div className="flex">
+                  {p.typeProperty !== "Terreno" ? <div className="flex">
                     <p className="flex text-xs me-5">{p.bathroom} <BiSolidBath size={15} />
                     </p>
                     <p className="flex text-xs ">{p.bedroom} <IoMdBed size={17} />
                     </p>
-                  </div>
+                  </div> : null}
                 </div>
               </div>
             </div>

@@ -36,10 +36,10 @@ if(loading){
             <tr className="bg-base-300">
               <th>Tipo de Propiedad</th>
               <th>Tipo de Transacción</th>
+              <th>Ubicación</th>
               <th>Descripción</th>
               <th>Dormitorios</th>
               <th>Baños</th>
-              <th>Ubicación</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -50,8 +50,8 @@ if(loading){
                 <td>{prop.typeTransaction} </td>
                 <td>{prop.location}</td>
                 <td>{prop.description}</td>
-                <td>{prop.bathroom}</td>
                 <td>{prop.bedroom}</td>
+                <td>{prop.bathroom}</td>
                 <td><div className="md:flex gap-2" >
                   <button className="btn" onClick={() => deleteProperty(prop._id)}>
                     <FaTrash size={20} />

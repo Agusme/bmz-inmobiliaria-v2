@@ -8,6 +8,7 @@ export default function PropietyCard() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-2">
       {searchResults.map((p) => (
+        
         <div key={p._id} className="mb-6 transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-lg  overflow-hidden bg-white">
           <div className="relative">
             <a
@@ -30,10 +31,11 @@ export default function PropietyCard() {
             <p>{p.description.length > 27 ? `${p.description.slice(0, 27)}...` : p.description}</p>
             <h3 className="mb-1 h-12 font-medium">{p.location}</h3>
             <div className="flex">
-              <p className="flex text-xs me-5">{p.bathroom} <BiSolidBath size={15} /></p>
-              <p className="flex text-xs">{p.bedroom} <IoMdBed size={17} /></p>
+             {p.typeProperty !== "Terreno"? ( <><p className="flex text-xs me-5">{p.bathroom} <BiSolidBath size={15} /></p>
+              <p className="flex text-xs">{p.bedroom} <IoMdBed size={17} /></p></>) : null }
             </div>
           </div>
+          
         </div>
       ))}
     </div>

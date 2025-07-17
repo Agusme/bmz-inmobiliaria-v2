@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 export default function FormAdmin() {
 
-    const { register, handleSubmit, reset, formState: { errors, dirtyFields, isValid } } = useForm<PropertyFormData>({ resolver: yupResolver(propertySchema), mode: 'onChange' });
+    const { register, handleSubmit, reset, formState: { errors, dirtyFields, isValid } } = useForm<PropertyFormData>({ resolver: yupResolver(propertySchema), mode: 'onChange' } );
 
     const inputClass = (fieldName: keyof PropertyFormData) => {
         const error = errors[fieldName];
