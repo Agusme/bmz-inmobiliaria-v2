@@ -8,6 +8,7 @@ import Propiedades from "./screens/Propiedades"
 import Admin from "./screens/Admin"
 import TableAdmin from "./components/Admin/TableAdmin"
 import PropertyFound from "./screens/PropertyFound"
+import DetallePropiedad from "./screens/DetallePropiedad"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/contacto" element={<Contact />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/propiedades" element={<Propiedades />} />
+          <Route path="/property/:id" element={<DetallePropiedad/>} />
           <Route path="/admin" element={<Admin/>} />
           <Route path="/admin/propiedadesCargadas" element={<TableAdmin/>} />
           <Route path="/propiedadesEncontradas" element={<PropertyFound/>} />
