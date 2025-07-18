@@ -1,8 +1,8 @@
 
 export default function LoginPage() {
     return (
-        <div className="relative bg-[url('../../src/assets/carrusel/terreno.jpeg')] bg-cover  min-h-[80vh] ">
-            <div className="bg-black/60  min-h-[80vh] flex justify-center p-10">
+        <div className="relative bg-[url('../../src/assets/carrusel/terreno.jpeg')] bg-cover  min-h-[80vh] lg:h-screen">
+            <div className="bg-black/60  min-h-[80vh] lg:h-screen flex justify-center p-10">
                 <div className="bg-white rounded-lg w-full max-w-xl p-6">
                     <div className="avatar avatar-placeholder flex justify-center items-center">
                         <div className="bg-neutral text-neutral-content w-16 rounded-full">
