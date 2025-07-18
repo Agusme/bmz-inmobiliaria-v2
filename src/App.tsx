@@ -9,22 +9,31 @@ import Admin from "./screens/Admin"
 import TableAdmin from "./components/Admin/TableAdmin"
 import PropertyFound from "./screens/PropertyFound"
 import DetallePropiedad from "./screens/DetallePropiedad"
+import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes"
+import LoginPage from "./screens/LoginPage"
 
 function App() {
   return (
     <Router>
       <div className=" flex flex-col min-h-screen">
-        <Navbar/>      
-          <div className="flex-grow">
+        <Navbar />
+        <div className="flex-grow">
           <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contacto" element={<Contact />} />
-          <Route path="/nosotros" element={<Nosotros />} />
-          <Route path="/propiedades" element={<Propiedades />} />
-          <Route path="/property/:id" element={<DetallePropiedad/>} />
-          <Route path="/admin" element={<Admin/>} />
-          <Route path="/admin/propiedadesCargadas" element={<TableAdmin/>} />
-          <Route path="/propiedadesEncontradas" element={<PropertyFound/>} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/contacto" element={<Contact />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/propiedades" element={<Propiedades />} />
+            <Route path="/property/:id" element={<DetallePropiedad />} />
+            <Route path="/admin" element={<PrivateRoutes>
+              <Admin />
+            </PrivateRoutes>} />
+            <Route
+              path={'/admin/propiedadesCargadas'} element={<PrivateRoutes>
+                <TableAdmin />
+              </PrivateRoutes>}
+            />
+            <Route path="/propiedadesEncontradas" element={<PropertyFound />} />
           </Routes>
         </div>
         <Footer />
