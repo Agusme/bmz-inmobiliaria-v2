@@ -8,7 +8,7 @@ const Nosotros = () => {
         <div className="bg-[url('/Fondo.jpeg')] bg-cover bg-center flex justify-center items-start p-10">
             <div className="bg-white bg-opacity-90  shadow-lg p-8  w-full rounded-lg">
                 <h1 className="text-3xl  mb-6 uppercase font-thin">
-                    Conocé BMZ Propiedades: <strong className=' text-red-800'>Inmobiliaria de confianza en Tucumán</strong>
+                    Conocé BMZ Propiedades: <strong>Inmobiliaria en Tucumán</strong>
                 </h1>
                 <p>
                     Somos una <strong>
@@ -19,40 +19,41 @@ const Nosotros = () => {
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 my-8 '>
                    <div>
                    <div className='flex justify-center'>
-                        <p className='font-bold  text-red-800 text-4xl'> + </p>
+                        <p className=' text-red-800 text-4xl'> + </p>
                         <CountUp
                             end={30}
                             duration={10}
-                            className="font-bold  text-red-800 text-4xl"
+                            className=" text-red-800 text-4xl"
                         />
                     </div>
                     <p className='text-center'>Años de experiencia</p>
                    </div>
                    <div>
                    <div className='flex justify-center'>
-                        <p className='font-bold  text-red-800 text-4xl'> + </p>
+                        <p className=' text-red-800 text-4xl'> + </p>
                         <CountUp
                             end={1500}
                             duration={5}
-                            className="font-bold  text-red-800 text-4xl"
+                            className=" text-red-800 text-4xl"
                         />
                     </div>
                     <p className='text-center'>Propiedades vendidas</p>
                    </div>
                    <div>
                    <div className='flex justify-center'>
-                        <p className='font-bold  text-red-800 text-4xl'> + </p>
+                        <p className=' text-red-800 text-4xl'> + </p>
                         <CountUp
                             end={3000}
                             duration={5}
-                            className="font-bold  text-red-800 text-4xl "
+                            className="  text-red-800 text-4xl "
                         />
                     </div>
                     <p className='text-center'>Clientes felices</p>
                    </div>
                 </div>
-                <div className='my-5 pt-5'>
-                    <RedesSociales iconColor="text-slate-700" iconSize='text-5xl' ></RedesSociales>
+                <div className='rounded bg-white py-2'>
+                    <h3 className='text-center mb-2 font-semibold'>Seguinos en nuestras Redes</h3>
+                    <RedesSociales iconColor="text-slate-700" iconSize='text-3xl' ></RedesSociales>
 
                 </div>
             </div>

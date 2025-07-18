@@ -4,7 +4,7 @@ import { RiFacebookCircleLine } from "react-icons/ri";
 export default function RedesSociales({ iconColor = "text-white", iconSize='text-4xl'}) {
     return (
         <div>
-            <ul className={`flex justify-center dm:justify-start gap-4 mt-4 ${iconSize}`}>
+            <ul className={`flex justify-center dm:justify-start gap-4 ${iconSize}`}>
                 <li className={`${iconColor} hover:opacity-70 transition-opacity `}>
                     <a href="https://www.facebook.com/bmzPropiedades" target="_blank"
                         rel="noopener noreferrer"
