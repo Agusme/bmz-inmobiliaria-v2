@@ -1,8 +1,8 @@
 
 export default function LoginPage() {
     return (
-        <div className="relative bg-[url('../../src/assets/carrusel/terreno.jpeg')] bg-cover  min-h-[60vh] ">
-            <div className="bg-black/60  min-h-[60vh] flex justify-center p-10">
+        <div className="relative bg-[url('../../src/assets/carrusel/terreno.jpeg')] bg-cover  min-h-[80vh] ">
+            <div className="bg-black/60  min-h-[80vh] flex justify-center p-10">
                 <div className="bg-white rounded-lg w-full max-w-xl p-6">
                     <div className="avatar avatar-placeholder flex justify-center items-center">
                         <div className="bg-neutral text-neutral-content w-16 rounded-full">
@@ -10,7 +10,7 @@ export default function LoginPage() {
                         </div>
                     </div>
                     <form className="flex flex-col items-center gap-4 my-4">
-                        <label className="input">
+                        <label className="input w-full mx-auto">
                             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g
                                     strokeLinejoin="round"
@@ -30,7 +30,7 @@ export default function LoginPage() {
 
                             />
                         </label>
-                        <label className="input">
+                        <label className="input w-full mx-auto">
                             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g
                                     strokeLinejoin="round"
@@ -52,7 +52,7 @@ export default function LoginPage() {
 
                             />
                         </label>
-                 <button className="btn btn-active">Entrar</button>
+                 <button className="btn btn-active w-40">Entrar</button>
                     </form>
 
                 </div>
