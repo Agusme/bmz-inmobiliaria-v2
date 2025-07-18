@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import { BiSolidBath } from "react-icons/bi";
 import { IoMdBed } from "react-icons/io";
 import { usePropertyStore } from "../../store/propertyStore";
+import { Link } from "react-router-dom";
+import BtnConsultarPrecio from "../BtnConsultarPrecio";
 
 
 
@@ -19,10 +21,10 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
 
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: propiedadesFiltradas.length > 1,
     speed: 500,
-    slidesToShow: 3,
+  slidesToShow: Math.min(3, propiedadesFiltradas.length),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2500,
@@ -71,37 +73,30 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
           ))}
         </div>) : <Slider {...settings}>
           {propiedadesFiltradas.map((p) => (
-            <div key={p._id} className="px-2">
-              <div className=" mb-6 transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-lg overflow-hidden bg-white">
-                <div className="relative">
-                  <a
-                    href={`https://wa.me/5491123456789?text=${encodeURIComponent(
-                      `Hola, estoy interesada en la propiedad ubicada en ${p.location}`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn bg-yellow-400 absolute top-56 right-2 text-xs px-4 py-2 uppercase shadow-2xl rounded-3xl "
-                  >
-                    consultar precio
-                  </a>
-                </div>
-                <img
-                  src={p.images[0]}
-                  alt={p.location}
-                  className="rounded-t-xl mx-auto w-full h-60 object-cover"
-                />
-                <div className="px-2 pt-6 pb-2 text-sm uppercase text-zinc-500">
-                  <p>{p.description.length > 27 ? `${p.description.slice(0, 27)}...` : p.description} </p>
-                  <h3 className="mb-1 h-12 font-medium ">{p.location}</h3>
-                  {p.typeProperty !== "Terreno" ? <div className="flex">
-                    <p className="flex text-xs me-5">{p.bathroom} <BiSolidBath size={15} />
-                    </p>
-                    <p className="flex text-xs ">{p.bedroom} <IoMdBed size={17} />
-                    </p>
-                  </div> : null}
+            <Link to={`/property/${p._id}`} key={p._id}>
+              <div key={p._id} className="px-2">
+                <div className=" mb-6 transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-lg overflow-hidden bg-white">
+                  <div className="relative">
+                    <BtnConsultarPrecio className="absolute top-56 right-2" />
+                  </div>
+                  <img
+                    src={p.images[0]}
+                    alt={p.location}
+                    className="rounded-t-xl mx-auto w-full h-60 object-cover"
+                  />
+                  <div className="px-2 pt-6 pb-2 text-sm uppercase text-zinc-500">
+                    <p>{p.description.length > 27 ? `${p.description.slice(0, 27)}...` : p.description} </p>
+                    <h3 className="mb-1 h-12 font-medium ">{p.location}</h3>
+                    {p.typeProperty !== "Terreno" && p.typeProperty !== 'Local' ? <div className="flex">
+                      <p className="flex text-xs me-5">{p.bathroom} <BiSolidBath size={15} />
+                      </p>
+                      <p className="flex text-xs ">{p.bedroom} <IoMdBed size={17} />
+                      </p>
+                    </div> : null}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </Slider>}
 

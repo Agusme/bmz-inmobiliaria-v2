@@ -1,6 +1,7 @@
 import { BiSolidBath } from "react-icons/bi"
 import { usePropertyStore } from "../../store/propertyStore"
 import { IoMdBed } from "react-icons/io"
+import { Link } from "react-router-dom"
 
 export default function PropietyCard() {
         const {searchResults}= usePropertyStore()
@@ -9,6 +10,7 @@ export default function PropietyCard() {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-2">
       {searchResults.map((p) => (
         
+      <Link to={`/property/${p._id}`} key={p._id}>
         <div key={p._id} className="mb-6 transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-lg  overflow-hidden bg-white">
           <div className="relative">
             <a
@@ -37,6 +39,7 @@ export default function PropietyCard() {
           </div>
           
         </div>
+      </Link>
       ))}
     </div>
   )
