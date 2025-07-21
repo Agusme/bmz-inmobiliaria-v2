@@ -1,15 +1,34 @@
+import { useForm } from "react-hook-form"
+import { LoginTypes } from "../types/FormLoginTypes"
+import { useAuthStore } from "../store/authStore"
+import { useNavigate } from "react-router-dom"
 
 export default function LoginPage() {
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<LoginTypes>()
+    const { login } = useAuthStore()
+    const navigate = useNavigate()
+    const onSubmit = (data: LoginTypes) => {
+        console.log(data)
+        if (data.userName === import.meta.env.VITE_USERNAME_ADMIN && data.password === import.meta.env.VITE_PASSWORD_ADMIN) {
+            login()
+            navigate('/admin')
+        } else {
+            alert('credenciales incorrectas')
+        }
+        reset()
+    }
+
     return (
         <div className="relative bg-[url('../../src/assets/carrusel/terreno.jpeg')] bg-cover  min-h-[80vh] lg:h-screen">
-            <div className="bg-black/60  min-h-[80vh] lg:h-screen flex justify-center p-10">
+            <div className="bg-black/60  min-h-[80vh] lg:h-screen flex justify-center items-center p-10">
                 <div className="bg-white rounded-lg w-full max-w-xl p-6">
                     <div className="avatar avatar-placeholder flex justify-center items-center">
                         <div className="bg-neutral text-neutral-content w-16 rounded-full">
                             <span className="text-xs">ADMIN</span>
                         </div>
                     </div>
-                    <form className="flex flex-col items-center gap-4 my-4">
+                    <form className="flex flex-col items-center gap-4 my-4" onSubmit={handleSubmit(onSubmit)}>
                         <label className="input w-full mx-auto">
                             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g
@@ -25,10 +44,12 @@ export default function LoginPage() {
                             </svg>
                             <input
                                 type="text"
-                                required
                                 placeholder="Usuario"
-
+                                required
+                                {...register('userName', { required: 'Este campo es obligatorio' })}
                             />
+                            {errors.userName && <p className="text-red-500 text-sm"> {errors.userName.message} </p>}
+
                         </label>
                         <label className="input w-full mx-auto">
                             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -49,10 +70,11 @@ export default function LoginPage() {
                                 type="password"
                                 required
                                 placeholder="Contraseña"
-
+                                {...register('password', { required: 'El campo es obligatorio' })}
                             />
+                            {errors.password && <p className="text-red-500 text-sm"> {errors.password.message} </p>}
                         </label>
-                 <button className="btn btn-active w-40">Entrar</button>
+                        <button className="btn btn-active w-40">Entrar</button>
                     </form>
 
                 </div>
