@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import logoNegro from '../assets/logoNegro.png'
+import { useAuthStore } from '../store/authStore'
 export default function Navbar() {
+    const {isAuthenticated, logout}= useAuthStore()
     return (
         <div className="max-w-screen-xl text-gray-600 mx-auto px-4 navbar bg-base-100 shadow-sm">
             <div className="flex-1">
@@ -38,6 +40,12 @@ export default function Navbar() {
                     >
                         Contacto
                     </NavLink></li>
+                 {isAuthenticated &&    <li>
+                        <button className=' btn btn-soft btn-error' onClick={()=>logout()}>
+
+                    Cerrar Sesión
+                        </button>
+                    </li>}
                 </ul>
             </div>
             <div className="flex-none lg:hidden">
@@ -86,7 +94,13 @@ export default function Navbar() {
                     >
                         Contacto
                     </NavLink></li>
-
+{isAuthenticated && (
+    <li>
+        <button className='btn btn-soft btn-error' onClick={() => logout()}>
+            Cerrar Sesión
+        </button>
+    </li>
+)}
                     </ul>
                 </div>
             </div>
