@@ -13,7 +13,7 @@ export default function DetallePropiedad() {
   if (!propiedad) return null;
 
     return (
-        <div className="relative bg-[url('../../src/assets/carrusel/terreno.jpeg')] bg-cover  min-h-[60vh] ">
+        <div className="relative bg-[url('/terreno.jpeg')] bg-cover  min-h-[60vh] ">
             <div className="bg-black/60  min-h-[60vh] p-7 md:px-16">
                 <div className="bg-white rounded-lg p-3 md:px-7">
                     <h1 className="text-2xl text-center">Detalle de la Propiedad</h1>
