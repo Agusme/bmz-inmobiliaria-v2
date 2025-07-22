@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# BMZ Propiedades - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Versión 2 del sitio web para la inmobiliaria **BMZ Propiedades**, desarrollado con tecnologías modernas y una arquitectura optimizada. Esta plataforma permite visualizar propiedades en venta, realizar búsquedas, gestionar los inmuebles mediante un sistema CRUD, y contactar a la empresa de forma sencilla.
 
-Currently, two official plugins are available:
+🔗 [Acceder al sitio](https://bmz-inmobiliaria-v2-3cmw7tkrv-agusmes-projects.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🏠 Descripción del Proyecto
 
-## Expanding the ESLint configuration
+BMZ Propiedades es una aplicación web destinada a mostrar propiedades inmobiliarias como casas, departamentos, terrenos y locales comerciales disponibles para la venta. Ofrece una experiencia intuitiva tanto para los usuarios que buscan inmuebles como para los administradores que los gestionan.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Esta nueva versión fue reescrita completamente con **TypeScript**, **TailwindCSS** y una **arquitectura optimizada**, reemplazando el stack anterior basado en Bootstrap y JavaScript.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Funcionalidades principales
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🏘️ Listado de propiedades en venta.
+- 🔍 Buscador de propiedades.
+- 📩 Formulario de contacto vía EmailJS.
+- 🔐 Login de acceso para administración.
+- ✏️ Sistema CRUD completo para gestionar propiedades (crear, editar, eliminar).
+- 📄 Secciones del sitio: Inicio, Nosotros, Propiedades, Contacto.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Tecnologías Utilizadas
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Frontend
+
+- [Vite](https://vitejs.dev/) – Bundler rápido y moderno.
+- [React 19](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- [React Router DOM](https://reactrouter.com/en/main) – Ruteo de la SPA.
+- [TailwindCSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/) – Estilado moderno y componentes UI.
+- [Zustand](https://zustand-demo.pmnd.rs/) – Manejo de estado global.
+- [React Hook Form](https://react-hook-form.com/) + [Yup](https://github.com/jquense/yup) – Validación de formularios.
+- [EmailJS](https://www.emailjs.com/) – Envío de formularios de contacto sin servidor.
+- [Axios](https://axios-http.com/) – Conexión al backend.
+- [SweetAlert2](https://sweetalert2.github.io/) – Alertas personalizadas.
+
+### Otros complementos
+
+- React Slick y React Carousel – Carruseles de imágenes.
+- React Icons – Íconos vectoriales.
+- React CountUp – Contadores animados.
+
+
+## 🛠️ Scripts disponibles
+
+- `npm run dev` – Ejecuta el proyecto en desarrollo.
+- `npm run build` – Compila el proyecto para producción.
+- `npm run preview` – Previsualiza el build.
+- `npm run lint` – Linting del código.
+
+## 🔐 Autenticación
+
+El sistema cuenta con una autenticación simple de login para acceder al panel de administración y poder gestionar las propiedades.
+
+## 📌 Notas finales
+
+- Esta es la **segunda versión** del frontend. La primera fue desarrollada con React, JavaScript y Bootstrap.
+- En esta versión se priorizó la escalabilidad, la accesibilidad y la experiencia de usuario.
+- El proyecto está optimizado para futuras integraciones con paneles administrativos o dashboards más robustos.
+
+---
+
+🧑‍💻 **Desarrollado por:** Agustina Mena  
+📅 **Versión actual:** 2.0  
+
