@@ -1,6 +1,7 @@
 import { IoHappyOutline } from "react-icons/io5";
 import FormAdmin from "../components/Admin/FormAdmin";
 import { Link } from "react-router-dom";
+import CustomButtom from "../components/custom/CustomButtom";
 
 
 
@@ -14,9 +15,9 @@ export default function Admin() {
         </p>
         <div className="my-4 flex justify-end">
           <Link to={'/admin/propiedadesCargadas'}>
-            <button className="btn bg-red-800 text-white rounded-lg text-sm">
+            <CustomButtom className="rounded-lg text-sm">
               Ver Propiedades
-            </button>
+            </CustomButtom>
           </Link>
         </div>
 

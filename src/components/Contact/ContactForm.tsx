@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
+import CustomButtom from '../custom/CustomButtom';
 
 type FormData = {
     nombre: string;
@@ -110,7 +111,7 @@ export default function ContactForm() {
 
                 </div>
                 <div className="flex justify-end">
-                    <button className="btn text-white bg-red-800 w-1/3">Enviar</button>
+                    <CustomButtom> Enviar</CustomButtom>
                 </div>
             </form>
         </div>
