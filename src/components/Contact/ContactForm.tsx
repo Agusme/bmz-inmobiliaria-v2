@@ -16,7 +16,7 @@ export default function ContactForm() {
     const onSubmit = (data: FormData) => {
 
         emailjs.send('service_n3v74fh', 'template_g7q28lw', {
-            nombre: data.nombre, celular: data.celular, consulta: data.consulta
+             from_name: data.nombre,   phone: data.celular, message: data.consulta
         }, 'BDtEaJzGHui804FZE')
             .then(() => {
                 Swal.fire({
