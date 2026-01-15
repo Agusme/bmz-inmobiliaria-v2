@@ -1,7 +1,8 @@
-import { BiSolidBath } from "react-icons/bi"
-import { usePropertyStore } from "../../store/propertyStore"
-import { IoMdBed } from "react-icons/io"
-import { Link } from "react-router-dom"
+import { getOptimizedCloudinaryUrl } from "../../utils/cloudinary";
+import { BiSolidBath } from "react-icons/bi";
+import { usePropertyStore } from "../../store/propertyStore";
+import { IoMdBed } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function PropietyCard() {
         const {searchResults}= usePropertyStore()
@@ -25,7 +26,7 @@ export default function PropietyCard() {
             </a>
           </div>
           <img
-            src={p.images[0]}
+            src={getOptimizedCloudinaryUrl(p.images[0], 400, 240)}
             alt={p.location}
             className=" mx-auto w-full h-60 object-cover"
             width={400} // Asumiendo un ancho de 400px para la tarjeta

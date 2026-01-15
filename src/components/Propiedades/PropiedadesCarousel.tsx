@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { getOptimizedCloudinaryUrl } from "../../utils/cloudinary";
 import { useEffect } from "react";
 import Slider from "react-slick";
 import { BiSolidBath } from "react-icons/bi";
@@ -80,7 +81,7 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
                     <BtnConsultarPrecio className="absolute top-56 right-2" />
                   </div>
                   <img
-                    src={p.images[0]}
+                    src={getOptimizedCloudinaryUrl(p.images[0], 400, 240)}
                     alt={p.location}
                     className="rounded-t-xl mx-auto w-full h-60 object-cover"
                     width={400} // Asumiendo un ancho de 400px para la tarjeta
