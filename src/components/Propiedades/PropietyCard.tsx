@@ -28,6 +28,8 @@ export default function PropietyCard() {
             src={p.images[0]}
             alt={p.location}
             className=" mx-auto w-full h-60 object-cover"
+            width={400} // Asumiendo un ancho de 400px para la tarjeta
+            height={240}
           />
           <div className="px-2 pt-6 pb-2 text-sm uppercase text-zinc-500">
             <p>{p.description.length > 27 ? `${p.description.slice(0, 27)}...` : p.description}</p>

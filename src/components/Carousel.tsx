@@ -39,6 +39,8 @@ export default function Carousel() {
                             src={item.url}
                             alt={item.description}
                             className="w-full h-[350px] object-cover"
+                            width={1200} // Asumiendo un ancho máximo de 1200px para el carrusel
+                            height={350}
                         />
                         <div className="absolute bottom-10 right-8 text-white uppercase font-semibold bg-black/40 py-2 px-16 ">
                             {item.description}

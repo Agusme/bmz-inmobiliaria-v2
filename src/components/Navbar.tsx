@@ -7,7 +7,7 @@ export default function Navbar() {
     <div className="max-w-screen-xl text-gray-600 mx-auto px-4 navbar bg-base-100 shadow-sm">
       <div className="flex-1">
         <NavLink to="/">
-          <img src={logoNegro} alt="logo bmz propiedades" className="w-20" />
+          <img src={logoNegro} alt="logo bmz propiedades" className="w-20" width={140} height={80} />
         </NavLink>
       </div>
       <div className="flex-none hidden lg:flex uppercase">

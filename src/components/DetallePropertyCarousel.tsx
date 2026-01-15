@@ -22,6 +22,8 @@ export default function DetallePropertyCarousel() {
       src={img}
       alt={`Miniatura ${index + 1}`}
       className="object-cover h-16 w-24 rounded"
+      width={96} // w-24 es 96px
+      height={64} // h-16 es 64px
     />
   )) ?? [])
 }
@@ -45,6 +47,8 @@ export default function DetallePropertyCarousel() {
       src={img}
       alt="Fondo difuminado"
       className="absolute top-0 left-0 w-full h-full object-cover blur-2xl scale-125"
+      width={800} // Asumiendo un ancho de 800px para la imagen de propiedad
+      height={400} // Altura del contenedor h-[400px]
     />
 
     {/* Imagen principal centrada */}
@@ -52,6 +56,8 @@ export default function DetallePropertyCarousel() {
       src={img}
       alt={`Imagen ${index + 1}`}
       className="relative z-10 mx-auto h-full object-contain"
+      width={800} // Asumiendo un ancho de 800px para la imagen de propiedad
+      height={400} // Altura del contenedor h-[400px]
     />
   </div>
 ))}
