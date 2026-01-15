@@ -3,6 +3,7 @@ import { BiSolidBath } from "react-icons/bi";
 import { usePropertyStore } from "../../store/propertyStore";
 import { IoMdBed } from "react-icons/io";
 import { Link } from "react-router-dom";
+import OptimizedImage from "../OptimizedImage";
 
 export default function PropietyCard() {
         const {searchResults}= usePropertyStore()
@@ -25,11 +26,11 @@ export default function PropietyCard() {
               consultar precio
             </a>
           </div>
-          <img
+          <OptimizedImage
             src={getOptimizedCloudinaryUrl(p.images[0], 400, 240)}
             alt={p.location}
-            className=" mx-auto w-full h-60 object-cover"
-            width={400} // Asumiendo un ancho de 400px para la tarjeta
+            className="mx-auto w-full h-60 object-cover"
+            width={400}
             height={240}
           />
           <div className="px-2 pt-6 pb-2 text-sm uppercase text-zinc-500">

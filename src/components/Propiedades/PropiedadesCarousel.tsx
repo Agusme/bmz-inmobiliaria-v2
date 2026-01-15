@@ -7,6 +7,7 @@ import { IoMdBed } from "react-icons/io";
 import { usePropertyStore } from "../../store/propertyStore";
 import { Link } from "react-router-dom";
 import BtnConsultarPrecio from "../BtnConsultarPrecio";
+import OptimizedImage from "../OptimizedImage";
 
 
 
@@ -80,11 +81,11 @@ export default function PropiedadesCarousel({ tipoPropiedad = 'Tipo de propiedad
                   <div className="relative">
                     <BtnConsultarPrecio className="absolute top-56 right-2" />
                   </div>
-                  <img
+                  <OptimizedImage
                     src={getOptimizedCloudinaryUrl(p.images[0], 400, 240)}
                     alt={p.location}
                     className="rounded-t-xl mx-auto w-full h-60 object-cover"
-                    width={400} // Asumiendo un ancho de 400px para la tarjeta
+                    width={400}
                     height={240}
                   />
                   <div className="px-2 pt-6 pb-2 text-sm uppercase text-zinc-500">

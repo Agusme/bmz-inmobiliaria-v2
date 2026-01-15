@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
 import logoNegro from "../assets/logoNegro.png";
 import { useAuthStore } from "../store/authStore";
+import OptimizedImage from "./OptimizedImage";
+
 export default function Navbar() {
   const { isAuthenticated, logout } = useAuthStore();
   return (
     <div className="max-w-screen-xl text-gray-600 mx-auto px-4 navbar bg-base-100 shadow-sm">
       <div className="flex-1">
         <NavLink to="/">
-          <img src={logoNegro} alt="logo bmz propiedades" className="w-20" width={140} height={80} />
+          <OptimizedImage src={logoNegro} alt="logo bmz propiedades" className="w-20" width={140} height={80} />
         </NavLink>
       </div>
       <div className="flex-none hidden lg:flex uppercase">

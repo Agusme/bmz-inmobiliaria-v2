@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { usePropertyStore } from "../store/propertyStore";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import BtnConsultarPrecio from "../components/BtnConsultarPrecio";
+import LazyMap from "../components/LazyMap";
 
 const LazyDetallePropertyCarousel = lazy(() => import("../components/DetallePropertyCarousel"));
 
@@ -44,7 +45,7 @@ export default function DetallePropiedad() {
                             </div>
                             <div className="flex justify-center items-center">
                                 {loading ? <p> Cargando... </p> : (
-                                    <iframe src={propiedad?.map} className="w-96 h-72" loading="lazy"></iframe>
+                                    <LazyMap src={propiedad?.map} title={`Mapa de ${propiedad?.location}`} className="w-96 h-72" />
                                 )}
                             </div>
                         </div>

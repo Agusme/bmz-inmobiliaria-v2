@@ -2,6 +2,8 @@
 import logo from '../assets/logo.png'
 import { Link, NavLink } from "react-router-dom";
 import RedesSociales from "./RedesSociales";
+import OptimizedImage from "./OptimizedImage";
+
 export default function Footer() {
   return (
     <>
@@ -9,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 dm:grid-cols-2 lg:grid-cols-3 gap-4 ">
           <div>
             <Link to='/'>
-              <img src={logo} alt="logo bmz inmobiliaria" className="w-20 mx-auto" width={140} height={79} />
+              <OptimizedImage src={logo} alt="logo bmz inmobiliaria" className="w-20 mx-auto" width={140} height={79} />
             </Link>
           </div>
           <div className="text-center mx-auto dm:text-left ">
