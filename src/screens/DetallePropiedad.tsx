@@ -44,7 +44,7 @@ export default function DetallePropiedad() {
                             </div>
                             <div className="flex justify-center items-center">
                                 {loading ? <p> Cargando... </p> : (
-                                    <iframe src={propiedad?.map} className="w-96 h-72" ></iframe>
+                                    <iframe src={propiedad?.map} className="w-96 h-72" loading="lazy"></iframe>
                                 )}
                             </div>
                         </div>
