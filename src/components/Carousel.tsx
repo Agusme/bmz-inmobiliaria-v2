@@ -1,7 +1,7 @@
 import Slider from "react-slick";
-import terreno from '../assets/carrusel/terreno.jpeg';
-import casa from '../assets/carrusel/casas.jpeg';
-import casas1 from '../assets/carrusel/casas1.jpeg'
+import terreno from '../assets/carrusel/terreno.webp';
+import casa from '../assets/carrusel/casas.webp';
+import casas1 from '../assets/carrusel/casas1.webp'
 const images = [
     {
         url: terreno,

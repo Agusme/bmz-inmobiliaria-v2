@@ -5,7 +5,7 @@ const Nosotros = () => {
     return (
 
 
-        <div className="bg-[url('/terreno.jpeg')]  bg-cover bg-center flex justify-center items-start p-10">
+        <div className="bg-[url('/terreno.webp')]  bg-cover bg-center flex justify-center items-start p-10">
             <div className="bg-white bg-opacity-90  shadow-lg p-8  w-full rounded-lg">
                 <h1 className="text-3xl  mb-6 uppercase font-thin">
                     Conocé BMZ Propiedades: <strong>Inmobiliaria en Tucumán</strong>
