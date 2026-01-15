@@ -1,7 +1,5 @@
-import { useParams } from "react-router-dom"
-import { usePropertyStore } from "../store/propertyStore"
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import React, { lazy, Suspense } from "react";
+
+import { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { usePropertyStore } from "../store/propertyStore";
 import { HiOutlineLocationMarker } from "react-icons/hi";
