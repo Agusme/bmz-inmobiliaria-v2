@@ -1,16 +1,21 @@
 import { useParams } from "react-router-dom"
 import { usePropertyStore } from "../store/propertyStore"
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import DetallePropertyCarousel from "../components/DetallePropertyCarousel";
+import React, { lazy, Suspense } from "react";
+import { useParams } from "react-router-dom";
+import { usePropertyStore } from "../store/propertyStore";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import BtnConsultarPrecio from "../components/BtnConsultarPrecio";
+
+const LazyDetallePropertyCarousel = lazy(() => import("../components/DetallePropertyCarousel"));
 
 export default function DetallePropiedad() {
     const { id } = useParams();
-    const { propiedades, loading } = usePropertyStore()
+    const { propiedades, loading } = usePropertyStore();
 
-    const propiedad = propiedades.find((p) => p._id === id)
+    const propiedad = propiedades.find((p) => p._id === id);
 
-  if (!propiedad) return null;
+    if (!propiedad) return null;
 
     return (
         <div className="relative bg-[url('/terreno.webp')] bg-cover  min-h-[60vh] ">
@@ -24,30 +29,30 @@ export default function DetallePropiedad() {
                         </div>
                         <div className="border-b my-3" />
                         <div>
-                            <DetallePropertyCarousel />
+                            <Suspense fallback={<div>Cargando Carrusel...</div>}>
+                                <LazyDetallePropertyCarousel />
+                            </Suspense>
                         </div>
                         <div className="border-b my-3" />
                         <div className="grid grid-cols-1 md:grid-cols-2">
-                       <div>
-                         <div>
-                            <h3>Descripción de la Propiedad</h3>
-                            <p className="text-slate-800 text-sm">{propiedad?.description}</p>
-                        </div>
-                        <div className="text-end m-4">
-                            <BtnConsultarPrecio className="inline-block" />
-                        </div>
-                       </div>
-                       <div className="flex justify-center items-center">
-                        {loading ? <p> Cargando... </p>: (
-
-                        <iframe src={propiedad?.map} className="w-96 h-72" ></iframe>
-                        )}
-                       </div>
+                            <div>
+                                <div>
+                                    <h3>Descripción de la Propiedad</h3>
+                                    <p className="text-slate-800 text-sm">{propiedad?.description}</p>
+                                </div>
+                                <div className="text-end m-4">
+                                    <BtnConsultarPrecio className="inline-block" />
+                                </div>
+                            </div>
+                            <div className="flex justify-center items-center">
+                                {loading ? <p> Cargando... </p> : (
+                                    <iframe src={propiedad?.map} className="w-96 h-72" ></iframe>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    )
+    );
 }
