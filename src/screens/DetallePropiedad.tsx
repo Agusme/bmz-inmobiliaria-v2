@@ -1,7 +1,5 @@
-import { useParams } from "react-router-dom"
-import { usePropertyStore } from "../store/propertyStore"
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import React, { lazy, Suspense } from "react";
+
+import { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { usePropertyStore } from "../store/propertyStore";
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -46,7 +44,7 @@ export default function DetallePropiedad() {
                             </div>
                             <div className="flex justify-center items-center">
                                 {loading ? <p> Cargando... </p> : (
-                                    <iframe src={propiedad?.map} className="w-96 h-72" ></iframe>
+                                    <iframe src={propiedad?.map} className="w-96 h-72" loading="lazy"></iframe>
                                 )}
                             </div>
                         </div>
