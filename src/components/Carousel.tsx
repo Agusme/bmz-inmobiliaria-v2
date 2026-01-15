@@ -1,4 +1,6 @@
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import terreno from '../assets/carrusel/terreno.webp';
 import casa from '../assets/carrusel/casas.webp';
 import casas1 from '../assets/carrusel/casas1.webp'
@@ -41,6 +43,7 @@ export default function Carousel() {
                             className="w-full h-[350px] object-cover"
                             width={1200} // Asumiendo un ancho máximo de 1200px para el carrusel
                             height={350}
+                            fetchPriority="high"
                         />
                         <div className="absolute bottom-10 right-8 text-white uppercase font-semibold bg-black/40 py-2 px-16 ">
                             {item.description}
