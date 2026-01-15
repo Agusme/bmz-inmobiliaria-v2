@@ -1,6 +1,4 @@
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import terreno from '../assets/carrusel/terreno.webp';
 import casa from '../assets/carrusel/casas.webp';
 import casas1 from '../assets/carrusel/casas1.webp'
