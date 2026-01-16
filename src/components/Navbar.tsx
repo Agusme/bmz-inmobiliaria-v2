@@ -4,7 +4,8 @@ import { useAuthStore } from "../store/authStore";
 export default function Navbar() {
   const { isAuthenticated, logout } = useAuthStore();
   return (
-    <div className="max-w-screen-xl text-gray-600 mx-auto px-4 navbar bg-base-100 shadow-sm">
+    <header>
+    <nav className="max-w-screen-xl text-gray-600 mx-auto px-4 navbar bg-base-100 shadow-sm">
       <div className="flex-1">
         <NavLink to="/">
           <img src={logoNegro}  width={80}
@@ -77,7 +78,8 @@ export default function Navbar() {
       </div>
       <div className="flex-none lg:hidden">
         <div className="dropdown dropdown-end" tabIndex={0}>
-          <button className="btn btn-square btn-ghost" tabIndex={0}>
+          <button className="btn btn-square btn-ghost" tabIndex={0}   aria-label="Abrir menú de navegación"
+>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -155,6 +157,8 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
-    </div>
+    </nav>
+        </header>
+
   );
 }
