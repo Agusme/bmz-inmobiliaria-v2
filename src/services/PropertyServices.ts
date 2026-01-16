@@ -39,28 +39,32 @@ export const deletePropertyService = async (id: string) => {
   }
 };
 
-export const updatePropertyService = async (id:string,  updatedData: FormData)=>{
+export const updatePropertyService = async (
+  id: string,
+  updatedData: FormData
+) => {
   try {
-    const res= await axios.put(`${API_BASE_URL}/property/${id}`, updatedData)
+    const res = await axios.put(`${API_BASE_URL}/property/${id}`, updatedData);
     return res.data;
   } catch (error) {
-        console.error("Error al editar propiedad:", error);
-
+    console.error("Error al editar propiedad:", error);
   }
-
 };
 
-export const searchPropertyService = async({ typeTransaction, typeProperty }: SearchParams)=>{
+export const searchPropertyService = async ({
+  typeTransaction,
+  typeProperty,
+}: SearchParams) => {
   try {
-     const res = await axios.get(`${API_BASE_URL}/search`, {
-            params: {
-                typeTransaction,
-                typeProperty,
-            },
-        })
-        return res.data
+    const res = await axios.get(`${API_BASE_URL}/search`, {
+      params: {
+        typeTransaction,
+        typeProperty,
+      },
+    });
+    return res.data;
   } catch (error) {
     console.error("Error al eliminar propiedad:", error);
     throw error;
   }
-}
+};

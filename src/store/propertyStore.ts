@@ -12,15 +12,15 @@ import { SearchParams } from "../types/SearchParamsTypes";
 type PropertyStore = {
   propiedades: Property[];
   loading: boolean;
-   searchResults: Property[];
+  searchResults: Property[];
   fetchProperties: () => Promise<void>;
   deleteProperty: (id: string) => Promise<void>;
-  updateProperty: (id: string,data: FormData  ) => Promise<void>;
+  updateProperty: (id: string, data: FormData) => Promise<void>;
   searchProperty: (params: SearchParams) => Promise<void>;
 };
 export const usePropertyStore = create<PropertyStore>((set) => ({
   propiedades: [],
-  searchResults:[],
+  searchResults: [],
   loading: false,
 
   fetchProperties: async () => {
@@ -85,29 +85,30 @@ export const usePropertyStore = create<PropertyStore>((set) => ({
     }
   },
 
-  updateProperty: async(id:string, data: FormData )=>{
+  updateProperty: async (id: string, data: FormData) => {
     try {
-     const updated= await updatePropertyService(id, data);
-     set((state)=>({
-      propiedades:state.propiedades.map((p)=> p._id === id ? {...p, updated} : p)
-     }))
-    ;
+      const updated = await updatePropertyService(id, data);
+      set((state) => ({
+        propiedades: state.propiedades.map((p) =>
+          p._id === id ? { ...p, updated } : p
+        ),
+      }));
     } catch (error) {
-    console.error("Error al actualizar propiedad:", error);
+      console.error("Error al actualizar propiedad:", error);
     }
   },
-  searchProperty: async(params: SearchParams)=>{
+  searchProperty: async (params: SearchParams) => {
     try {
-        const { typeTransaction, typeProperty } = params;
+      const { typeTransaction, typeProperty } = params;
 
-      const propiedadesEncontradas =await searchPropertyService({typeTransaction, typeProperty})
+      const propiedadesEncontradas = await searchPropertyService({
+        typeTransaction,
+        typeProperty,
+      });
 
-      set({searchResults: propiedadesEncontradas})
+      set({ searchResults: propiedadesEncontradas });
     } catch (error) {
-          console.error("Error al buscar propiedad:"+ error);
-
+      console.error("Error al buscar propiedad:" + error);
     }
-  }
-
-  
+  },
 }));
