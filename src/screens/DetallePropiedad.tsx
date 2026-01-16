@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePropertyStore } from "../store/propertyStore";
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -7,6 +7,44 @@ import BtnConsultarPrecio from "../components/BtnConsultarPrecio";
 const LazyDetallePropertyCarousel = lazy(
   () => import("../components/DetallePropertyCarousel")
 );
+const LazyMap = lazy(
+  () => import("../components/Maps/LazyMap")
+);
+
+function MapSection({ src }: { src: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setShow(true),
+      { rootMargin: "200px" }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className="flex justify-center items-center min-h-[300px]"
+    >
+      {show ? (
+        <Suspense fallback={<p>Cargando mapa...</p>}>
+          <LazyMap src={src} />
+        </Suspense>
+      ) : (
+        <p className="text-sm text-gray-500">
+          El mapa se cargará al hacer scroll
+        </p>
+      )}
+    </div>
+  );
+}
+
+
+
 
 export default function DetallePropiedad() {
   const { id } = useParams();
@@ -45,17 +83,9 @@ export default function DetallePropiedad() {
                   <BtnConsultarPrecio className="inline-block" />
                 </div>
               </div>
-              <div className="flex justify-center items-center">
-                {loading ? (
-                  <p> Cargando... </p>
-                ) : (
-                  <iframe
-                    src={propiedad?.map}
-                    className="w-96 h-72"
-                    loading="lazy"
-                  ></iframe>
-                )}
-              </div>
+              {!loading && propiedad.map && (
+              <MapSection src={propiedad.map} />
+            )}
             </div>
           </div>
         </div>
